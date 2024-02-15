@@ -12,6 +12,7 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-between px-6 md:px-24 py-10 ${inter.className}`}
     >
       <Landing />
+      {/* Explore sectiom */}
       <CTA />
     </main>
   );
