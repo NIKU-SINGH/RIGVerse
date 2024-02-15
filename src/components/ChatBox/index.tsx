@@ -61,7 +61,7 @@ function ChatBox() {
         <div className="w-full flex flex-col">
             {/* Chat */}
             <div className="w-full">
-                <ScrollArea className="h-[80vh] rounded-md  p-4 bg-gray-200 ">
+                <ScrollArea className="h-[100vh] rounded-xl  p-4 bg-gray-200 ">
                     {responses?.map((data, id) => (
                         <div key={id} className="mt-4">
                             {/* Question Box */}
@@ -80,7 +80,7 @@ function ChatBox() {
                             <div className="mt-2 flex space-x-2">
                                 {/* Avatar */}
                                 <Avatar>
-                                <AvatarImage src="https://github.com/shadcn.png" />
+                                    <AvatarImage src="https://github.com/shadcn.png" />
                                     <AvatarFallback>CN</AvatarFallback>
                                 </Avatar>
                                 {/* Messages */}

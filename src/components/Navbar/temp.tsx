@@ -15,7 +15,7 @@ import Link from 'next/link';
 const components: { title: string; href: string; description: string }[] = [
     {
         title: "Home",
-        href: "/docs/primitives/alert-dialog",
+        href: "/",
         description:
             "A modal dialog that interrupts the user with important content and expects a response.",
     },
