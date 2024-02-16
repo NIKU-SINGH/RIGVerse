@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
 import Link from 'next/link';
+import Image from 'next/image';
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -52,24 +53,23 @@ function index() {
 
                     <NavigationMenuItem className='w-96'>
                         <Link href='/'>
-
-                            Logo
+                            <Image src='/logo.png' alt='logo' width={150} height={150} />
                         </Link>
                     </NavigationMenuItem>
 
                     {components.map((component) => (
                         <NavigationMenuItem key={component.title}>
                             <NavigationMenuLink href={component.href}>
-                                <Button variant="ghost">
+                                <div className='mx-2 text-white hover:border-b-2'>
                                     {component.title}
-                                </Button>
+                                </div>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                     ))}
 
                     <div className='flex w-96 items-center justify-center gap-4'>
                         <NavigationMenuItem>
-                            <Button>Donate</Button>
+                            <Button className='bg-primary'>Donate</Button>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Button>Register</Button>

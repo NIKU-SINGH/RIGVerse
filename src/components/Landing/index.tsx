@@ -7,7 +7,7 @@ import { SparklesCore } from "@/components/ui/sparkles";
 
 export default function Landing() {
     return (
-        <div className="h-[40rem] rounded-3xl relative w-full bg-black flex flex-col items-center justify-center overflow-hidden">
+        <div className="h-[40rem] rounded-3xl relative w-[80vw] bg-black flex flex-col items-center justify-center overflow-hidden">
             <div className="w-full absolute inset-0 h-screen">
                 <Spotlight
                     className="-top-40 left-0 md:left-60 md:-top-20"

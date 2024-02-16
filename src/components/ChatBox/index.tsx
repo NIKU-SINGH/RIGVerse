@@ -61,70 +61,93 @@ function ChatBox() {
         <div className="w-full flex flex-col">
             {/* Chat */}
             <div className="w-full">
-                <ScrollArea className="h-[100vh] rounded-xl  p-4 bg-gray-200 ">
-                    {responses?.map((data, id) => (
-                        <div key={id} className="mt-4">
-                            {/* Question Box */}
-                            <div className="mt-2 flex space-x-2">
-                                {/* User Avatar */}
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                    <AvatarFallback>CN</AvatarFallback>
-                                </Avatar>
-                                {/* Question Box */}
-                                <div className="  bg-white rounded-md border p-4 w-full text-left">
-                                    {data.question}
-                                </div>
-                            </div>
-                            {/* //Answer Box */}
-                            <div className="mt-2 flex space-x-2">
-                                {/* Avatar */}
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                    <AvatarFallback>CN</AvatarFallback>
-                                </Avatar>
-                                {/* Messages */}
-                                <div className="  bg-white rounded-md border p-4 w-full text-left">
-                                    {!data.answer ? (
-                                        <div>
-                                            <Skeleton className=" h-[20px] rounded-full m-1" />
-                                            <Skeleton className=" h-[20px] rounded-full m-1" />
-                                            <Skeleton className=" h-[20px] rounded-full m-1" />
-                                        </div>
-                                    ) : (
-                                        data.answer
-                                    )}
-                                </div>
+                <div className="bg-gray-800 rounded-b-xl h-screen flex flex-col">
+                    <div className="w-full bg-primary rounded-r-lg h-10 md:h-16 p-4 flex items-center mb-4 justify-between">
+                        {/* Profile photo and status */}
+                        <div className="flex items-center gap-x-2">
+                            <Avatar className="h-8 w-8" >
+                                <AvatarImage src="https://github.com/shadcn.png" />
+                                <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
+                            <div>
+                                <div className="text-lg font-semibold tracking-tight">User name</div>
+                                <div className="text-xs font-light tracking-tight">Online</div>
                             </div>
                         </div>
-                    ))}
-                </ScrollArea>
-            </div>
-            {/* Input */}
-            <div className="px-2 lg:px-10 py-2 flex items-center justify-center">
-                <div className="w-full">
-                    {/* <Input /> */}
 
-                    <div className="flex justify-center items-center space-x-2">
-                        <Input
-                            className="w-4/5 p-6"
-                            type="text"
-                            value={question}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                setQuestion(e.target.value)
-                            }
-                            placeholder="Ask your Question here..."
-                        />
-                        <Button
-                            className="w-20 p-6 bg-blue-300"
-                            type="submit"
-                            onClick={handleSubmit}
-                            onKeyPress={(e) => {
-                                if (e.key === "Enter") console.log("Bhaina enter");
-                            }}
-                        >
-                            <Send />
-                        </Button>
+                        {/* Call and viceo caht */}
+                        <div className="px-2 text-lg font-semibold tracking-tight flex items-center">
+                            <div className="mx-4">Call</div>
+                            <div className="m-4">Video call</div>
+                        </div>
+
+                    </div>
+                    <ScrollArea className="h-[83vh] px-8">
+                        {responses?.map((data, id) => (
+                            <div key={id} className="mt-4">
+                                {/* Question Box */}
+                                <div className="mt-2 flex space-x-2">
+                                    {/* User Avatar */}
+                                    <Avatar>
+                                        <AvatarImage src="https://github.com/shadcn.png" />
+                                        <AvatarFallback>CN</AvatarFallback>
+                                    </Avatar>
+                                    {/* Question Box */}
+                                    <div className="  bg-gray-700 rounded-md p-4 w-full text-left">
+                                        {data.question}
+                                    </div>
+                                </div>
+                                {/* //Answer Box */}
+                                <div className="mt-4 flex space-x-2  flex-row-reverse">
+                                    {/* Avatar */}
+                                    <Avatar>
+                                        <AvatarImage src="https://github.com/shadcn.png" />
+                                        <AvatarFallback>CN</AvatarFallback>
+                                    </Avatar>
+                                    {/* Messages */}
+                                    <div className="rounded-md p-4 w-full text-left">
+                                        {!data.answer ? (
+                                            <div>
+                                                <Skeleton className=" h-[20px] rounded-full m-1" />
+                                                <Skeleton className=" h-[20px] rounded-full m-1" />
+                                                <Skeleton className=" h-[20px] rounded-full m-1" />
+                                            </div>
+                                        ) : (
+                                            data.answer
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </ScrollArea>
+                    {/* Input */}
+                    <div className=" flex items-center justify-center py-2">
+                        <div className="w-full">
+                            {/* <Input /> */}
+
+                            <div className="flex justify-center items-center space-x-2">
+                                <Input
+                                    className="w-4/5 p-6"
+                                    type="text"
+                                    value={question}
+                                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                        setQuestion(e.target.value)
+                                    }
+                                    placeholder="Type your message here..."
+                                />
+                                <Button
+                                    className="w-20 p-6 bg-primary"
+                                    type="submit"
+                                    onClick={handleSubmit}
+                                    onKeyPress={(e) => {
+                                        if (e.key === "Enter") console.log("Bhaina enter");
+                                    }}
+                                >
+                                    <Send />
+                                </Button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

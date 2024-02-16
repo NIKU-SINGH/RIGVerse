@@ -19,16 +19,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Sidebar() {
     return (
-        <div className="bg-blue-300 rounded-lg h-screen">
-            <div className="space-y-4 py-4">
+        <div className="bg-blue-400 w-96 rounded-l-lg h-screen">
+            <div className="space-y-4">
                 <div className="px-3 py-2">
-                    <div className="flex items-center mb-2 ">
+                    <div className="flex items-center mb-4 p-2 ">
                         <Avatar className="h-8 w-8" >
-                        <AvatarImage src="https://github.com/shadcn.png" />
+                            <AvatarImage src="https://github.com/shadcn.png" />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
-                        <div className=" px-4 text-lg font-semibold tracking-tight flex items-center justify-center">
-                            New Chat
+                        <div className=" px-2 text-lg font-semibold tracking-tight flex items-center justify-center">
+                            User name
                         </div>
                     </div>
 

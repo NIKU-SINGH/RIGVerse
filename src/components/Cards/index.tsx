@@ -11,8 +11,8 @@ export default function index() {
                 <Image
                     src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="jordans"
-                    height="400"
-                    width="400"
+                    height="600"
+                    width="600"
                     className="object-contain rounded-lg"
                 />
                 <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">

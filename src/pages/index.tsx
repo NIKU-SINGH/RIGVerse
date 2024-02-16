@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import Navbar from "@/components/Navbar/temp"
 import Landing from "@/components/Landing";
 import CTA from "@/components/CTA";
+import Feature from "@/components/Feature";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
     >
       <Landing />
       {/* Explore sectiom */}
+      <Feature />
       <CTA />
     </main>
   );
