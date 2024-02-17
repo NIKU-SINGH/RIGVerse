@@ -29,7 +29,11 @@ body {
     --input: 220 13% 91%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.5rem;
-    --primaryCard: 227 63% 0% 100%;
+    --primary-background: 227 13% 14% 100%;
+    --secondary-background: 226 15% 17% 100%;
+    --highlight-background: 225 7% 22% 100%;
+    --primary-button: 248 57% 60% 100%;
+    --secondary-button: 218 100% 39% 100%;
   }
 
   .dark {

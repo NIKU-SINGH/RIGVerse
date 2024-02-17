@@ -8,10 +8,11 @@ import {
     IconTableColumn,
 } from "@tabler/icons-react";
 import Image from "next/image";
+import DirectionAwareHoverDemo from "../DirectionAwareHover";
 
 export default function BentoGridDemo() {
     return (
-        <BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
+        <BentoGrid className=" mx-auto md:auto-rows-[20rem] py-6">
             {items.map((item, i) => (
                 <BentoGridItem
                     key={i}
@@ -19,7 +20,7 @@ export default function BentoGridDemo() {
                     description={item.description}
                     header={item.header}
                     className={item.className}
-                    icon={item.icon}
+                // link={item.link}
                 />
             ))}
         </BentoGrid>
@@ -30,24 +31,23 @@ const Skeleton = () => (
 );
 const items = [
     {
-        title: "The Dawn of Innovation",
+        title: "Cypherpunk",
         description: "Explore the birth of groundbreaking ideas and inventions.",
-        header: <Image className="rounded-2xl" src="/games/cypherpunk.jpg" alt="feature" width={400} height={200} />
-        ,
+        header: <DirectionAwareHoverDemo imageClassName="" imageUrl='/games/cypherpunk.jpg' className='h-48 w-full' />,
         className: "md:col-span-2",
-        icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+        link: "/explore",
     },
     {
         title: "The Digital Revolution",
         description: "Dive into the transformative power of technology.",
-        header: <Skeleton />,
+        header: <DirectionAwareHoverDemo imageClassName="" imageUrl='/games/cypherpunk.jpg' className='h-48 w-96' />,
         className: "md:col-span-1",
         icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
     },
     {
         title: "The Art of Design",
         description: "Discover the beauty of thoughtful and functional design.",
-        header: <Skeleton />,
+        header: <DirectionAwareHoverDemo imageClassName="" imageUrl='/games/cypherpunk.jpg' className='h-48 w-96' />,
         className: "md:col-span-1",
         icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
     },
@@ -55,7 +55,7 @@ const items = [
         title: "The Power of Communication",
         description:
             "Understand the impact of effective communication in our lives.",
-        header: <Skeleton />,
+        header: <DirectionAwareHoverDemo imageClassName="" imageUrl='/games/cypherpunk.jpg' className='h-48 w-full' />,
         className: "md:col-span-2",
         icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
     },

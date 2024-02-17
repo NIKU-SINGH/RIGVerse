@@ -15,7 +15,7 @@ export default function Home() {
       <Landing />
       {/* Explore sectiom */}
       <Feature />
-      <CTA />
+      {/* <CTA /> */}
     </main>
   );
 }

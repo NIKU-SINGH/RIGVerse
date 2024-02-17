@@ -7,8 +7,8 @@ import RightCollapsible from "@/components/Collapsible/Right";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <LeftCollapsible />
-      <RightCollapsible />
+      {/* <LeftCollapsible /> */}
+      {/* <RightCollapsible /> */}
       <NavbarDemo />
 
       <Component {...pageProps} />
