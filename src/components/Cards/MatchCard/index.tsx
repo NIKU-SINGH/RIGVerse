@@ -8,7 +8,7 @@ interface MatchCardProps {
 const Index: React.FC<MatchCardProps> = ({ name, points, imageUrl }) => {
     return (
         <div>
-            <div className="my-2 w-full flex items-center justify-center p-2 px-2 rounded-lg bg-gray-800 ">
+            <div className="my-2 w-full flex items-center justify-center p-2 px-2 rounded-lg bg-gray-800 hover:bg-primary text-gray-300 ">
                 <div className='flex gap-2'>
                     <Avatar className='w-8 h-8'>
                         <AvatarImage src="https://github.com/shadcn.png" className='w-10' />
@@ -20,7 +20,7 @@ const Index: React.FC<MatchCardProps> = ({ name, points, imageUrl }) => {
 
                 </div>
 
-                <p className='mx-4'>V/S</p>
+                <p className='mx-1'>V/S</p>
                 <div className='flex gap-2'>
 
                     <div className='flex flex-col'>

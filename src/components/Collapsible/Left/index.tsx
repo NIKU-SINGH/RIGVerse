@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area";
 import MatchCard from "@/components/Cards/MatchCard";
 import PurchaseCard from "@/components/Cards/PurchaseCard";
-import SmallCard from "@/components/Cards/smallCard";
+import SmallCard from "@/components/Cards/PlayCard";
 import Link from 'next/link';
 import Image from 'next/image';
 

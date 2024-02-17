@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/collapsible"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area";
-import SmallCard from "@/components/Cards/smallCard";
+import SmallCard from "@/components/Cards/PlayCard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import FriendsCard from "@/components/Cards/FriendsCard";
 import ChatBox from '@/components/ChatBox';

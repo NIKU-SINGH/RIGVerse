@@ -1,5 +1,6 @@
 import * as React from "react"
 
+// Import your components normally
 import { Card, CardContent } from "@/components/ui/card"
 import {
     Carousel,
@@ -8,27 +9,26 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import Cards from '@/components/Cards'
 
-function CarouselCompoent() {
+interface CarouselComponentProps {
+    children: React.ReactNode | string;
+    className?: string; // Optional className prop
+}
+
+// Update the function to accept props
+const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, className }) => {
     return (
         <Carousel
             opts={{
                 align: "start",
             }}
-            className="w-full mx-auto overflow-hidden relative z-10"
+            className="w-full mx-auto overflow-hidden relative z-10 "
         >
             <CarouselContent>
                 {Array.from({ length: 10 }).map((_, index) => (
-                    <CarouselItem key={index} className="md:basis-1/3">
-                        <div className="p-2">
-                            <Card>
-                                <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    {/* <span className="text-3xl font-semibold">{index + 1}</span> */}
-                                    <Cards />
-
-                                </CardContent>
-                            </Card>
+                    <CarouselItem key={index} className= {`${className || ''}`}>
+                        <div className="p-2 ">
+                            {children}
                         </div>
                     </CarouselItem>
                 ))}
@@ -38,5 +38,5 @@ function CarouselCompoent() {
         </Carousel>
     )
 }
-export default CarouselCompoent
 
+export default CarouselComponent
