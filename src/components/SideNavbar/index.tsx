@@ -17,7 +17,7 @@ import { useState } from "react";
 import MatchCard from "../Cards/MatchCard";
 import SmallCard from "../Cards/PlayCard";
 export function SideNavbar() {
-    const [toggle, setToggle] = useState(false)
+    const [toggle, setToggle] = useState(true)
     return (
         <div className="">
 
