@@ -19,7 +19,9 @@ function explore() {
                 {/* Main content */}
                 {/* Carpousel */}
                 <div className='w-full p-4'>
-                <CarouselCompoent children={<GameCard />} className="md:basis-1/2"/>
+                    <CarouselCompoent className="md:basis-1/2">
+                        <GameCard />
+                    </CarouselCompoent>
                 </div>
 
                 {/* Top Rated List */}
@@ -27,19 +29,25 @@ function explore() {
                     <h3 className="text-left text-3xl font-bold p-4 text-gray-400 relative z-20">
                         Genre 1
                     </h3>
-                    <CarouselCompoent children={<ProductCard />} className="md:basis-1/6"/>
+                    <CarouselCompoent className="md:basis-1/6">
+                        <ProductCard />
+                    </CarouselCompoent>
                 </div>
                 <div className='p-4'>
                     <h3 className="text-left text-3xl font-bold p-4 text-gray-400 relative z-20">
                         Genre 2
                     </h3>
-                    <CarouselCompoent children={<ProductCard />} className="md:basis-1/6"/>
+                    <CarouselCompoent className="md:basis-1/6">
+                        <ProductCard />
+                    </CarouselCompoent>
                 </div>
                 <div className='p-4'>
                     <h3 className="text-left text-3xl font-bold p-4 text-gray-400 relative z-20">
                         Genre 3
                     </h3>
-                    <CarouselCompoent children={<ProductCard />} className="md:basis-1/6"/>
+                    <CarouselCompoent className="md:basis-1/6">
+                        <ProductCard />
+                    </CarouselCompoent>
                 </div>
 
 
