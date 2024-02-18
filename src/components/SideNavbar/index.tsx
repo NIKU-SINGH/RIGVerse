@@ -18,6 +18,7 @@ import MatchCard from "../Cards/MatchCard";
 import SmallCard from "../Cards/PlayCard";
 export function SideNavbar() {
     const [toggle, setToggle] = useState(true)
+    // THis is is a coomment
     return (
         <div className="">
 
