@@ -8,8 +8,8 @@ function Chat() {
         <div className='flex'>
             <SideNavbar />
             <div className='flex flex-col w-full'>
-                <NavbarDemo />
-                <div className={`flex px-4 w-full`}>
+                {/* <NavbarDemo /> */}
+                <div className={`flex px-4 w-full mt-6`}>
                     <Sidebar />
                     <div className='hidden md:inline-block w-full'>
 

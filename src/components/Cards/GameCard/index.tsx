@@ -5,13 +5,23 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import { Play, ShoppingCart } from 'lucide-react';
+interface Game {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+    category: string[];
+    viewerCount: string;
+    badge: string;
+}
 
-export default function Index() {
+const Index: React.FC<IndexProps> = ({ game }) => {
     return (
-        <div className="relative w-full h-[300px] md:h-[400px] cursor-pointer overflow-hidden rounded-2xl group">
+        <div className="relative  h-[300px] md:h-[400px] cursor-pointer overflow-hidden rounded-2xl group">
             {/* Image with conditional blur on hover */}
             <Image
-                src="/games/hogwarts.png"
+                src={game.image}
                 alt="feature"
                 layout="fill"
                 objectFit="cover"
@@ -29,21 +39,21 @@ export default function Index() {
             {/* Text content that appears on hover */}
             <div className='flex flex-col bottom-0 absolute px-4 py-2 w-full rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out'>
                 <h1 className="text-white text-xl md:text-3xl font-extrabold tracking-tight">
-                    Hogwarts Legacy
+                    {game.name}
                 </h1>
                 <p className="text-gray-200">
-                    Step into the world of magic with Hogwarts an open-world action RPG set in the 1800s wizarding world.
-                    Forge your destiny as a student at Hogwarts School of Witchcraft and Wizardry.
+                    {game.description}
                 </p>
                 <div className="flex gap-4 my-2">
-                    <button className="w-36 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Play
+                    <button className="flex items-center justify-center w-36 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                        <Play className="mr-2" size={16} /> Play
                     </button>
-                    <button className="w-36 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                        Purchase
+                    <button className="flex items-center justify-center w-36 border-2 border-gray-700 bg-gray-800 hover:bg-primary text-white font-bold py-2 px-4 rounded-xl">
+                        <ShoppingCart className="mr-2" size={16} /> Purchase
                     </button>
                 </div>
             </div>
         </div>
     );
 }
+export default Index
