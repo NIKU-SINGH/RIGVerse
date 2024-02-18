@@ -15,7 +15,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from "react";
 import MatchCard from "../Cards/MatchCard";
-import SmallCard from "../Cards/PlayCard";
+import PlayCard from "../Cards/PlayCard";
 export function SideNavbar() {
     const [toggle, setToggle] = useState(true)
     // THis is is a coomment
@@ -95,14 +95,14 @@ export function SideNavbar() {
                                         Recent Play history
                                     </h2>
                                     <ScrollArea className="h-[250px] px-1">
-                                        <SmallCard name="Valorant" imageUrl="/games/valorant1.jpg" />
-                                        <SmallCard name="Call of Duty" imageUrl="/games/codPoster.jpg" />
-                                        <SmallCard name="Call of Duty" imageUrl="/games/codmw.jpg" />
-                                        <SmallCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
-                                        <SmallCard name="Assasins Creed" imageUrl="/games/creed4.jpg" />
-                                        <SmallCard name="FIFA 23" imageUrl="/games/fifa23.jpeg" />
-                                        <SmallCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
-                                        <SmallCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
+                                        <PlayCard name="Valorant" imageUrl="/games/valorant1.jpg" />
+                                        <PlayCard name="Call of Duty" imageUrl="/games/codPoster.jpg" />
+                                        <PlayCard name="Call of Duty" imageUrl="/games/codmw.jpg" />
+                                        <PlayCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
+                                        <PlayCard name="Assasins Creed" imageUrl="/games/creed4.jpg" />
+                                        <PlayCard name="FIFA 23" imageUrl="/games/fifa23.jpeg" />
+                                        <PlayCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
+                                        <PlayCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
                                     </ScrollArea>
                                 </div>
                                 <div className="py-2 px-3">

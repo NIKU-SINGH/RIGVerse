@@ -7,7 +7,7 @@ interface SmallCardProps {
 }
 const Index: React.FC<SmallCardProps> = ({ name, imageUrl }) => {
     return (
-        <div className='my-2 rounded-lg p-2 bg-gray-800 flex justify-start items-center gap-2'>
+        <div className='my-2 rounded-xl p-2 flex justify-start items-center gap-2 border-2 border-gray-800 hover:bg-blue-500 hover:text-gray-200'>
             {/* Recent purchases */}
             <div className='h-16 w-16 relative'>
                 <Image
