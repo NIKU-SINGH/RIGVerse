@@ -28,26 +28,26 @@ function ChatBox() {
         });
         setLoading(true);
 
-        try {
-            const res = await axios.post("http://localhost:8000/api/v1/query", {
-                userMessage: userMessage,
-            });
-            const answer: string = res.data.response.text;
-            setReplies((prevState: responseSchema[]) => {
-                return prevState.map((entry) =>
-                    entry.userMessage === userMessage ? { ...entry, replies: [] } : entry
-                );
-            });
-        } catch (e: unknown) {
-            console.log(e);
-            setReplies((prevState: responseSchema[]) => {
-                return prevState.map((entry) =>
-                    entry.userMessage === userMessage
-                        ? { ...entry, error: "there was an error" }
-                        : entry
-                );
-            });
-        }
+        // try {
+        //     const res = await axios.post("http://localhost:8000/api/v1/query", {
+        //         userMessage: userMessage,
+        //     });
+        //     const answer: string = res.data.response.text;
+        //     setReplies((prevState: responseSchema[]) => {
+        //         return prevState.map((entry) =>
+        //             entry.userMessage === userMessage ? { ...entry, replies: [] } : entry
+        //         );
+        //     });
+        // } catch (e: unknown) {
+        //     console.log(e);
+        //     setReplies((prevState: responseSchema[]) => {
+        //         return prevState.map((entry) =>
+        //             entry.userMessage === userMessage
+        //                 ? { ...entry, error: "there was an error" }
+        //                 : entry
+        //         );
+        //     });
+        // }
         setUserMessage("");
         setLoading(false);
     };

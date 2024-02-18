@@ -6,17 +6,21 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { Play, ShoppingCart } from 'lucide-react';
-interface Game {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    category: string[];
-    viewerCount: string;
-    badge: string;
+
+interface GameProps {
+    game: {
+        id: number;
+        name: string;
+        price: number;
+        description: string;
+        image: string;
+        category: string[];
+        viewerCount: string;
+        badge: string;
+    }
 }
 
-const Index: React.FC<IndexProps> = ({ game }) => {
+const Index: React.FC<GameProps> = ({ game }) => {
     return (
         <div className="relative  h-[300px] md:h-[400px] cursor-pointer overflow-hidden rounded-2xl group">
             {/* Image with conditional blur on hover */}

@@ -28,7 +28,6 @@ interface CarouselComponentProps {
 
 // Update the function to accept props
 const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, className, data }) => {
-    // console.log("data of games", data)
     return (
         <Carousel
             opts={{

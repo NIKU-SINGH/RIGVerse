@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Settings, FileUp, MessageCircleMore, MessageCirclePlus } from "lucide-react";
+import { Settings, FileUp, MessageCircleMore, MessageCirclePlus, Link } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import OverviewChat from "@/components/Sidebar/OverviewChat";
 
@@ -28,20 +28,21 @@ export function Sidebar() {
                     <ScrollArea className="h-[500px] px-1 scrollbar-hide">
                         <div className="space-y-1 py-2 px-3">
                             {Array.from({ length: 10 }, (_, index) => (
-                                <OverviewChat />
+                                <OverviewChat key={index} />
                             ))}
                         </div>
                     </ScrollArea>
                 </div>
 
                 <div className="absolute bottom-0 flex gap-1 flex-col py-2 px-3 w-full mt-2">
-                    <Button variant="ghost" className="border-2 hover:text-white text-gray-600 border-gray-800 hover:bg-blue-500 rounded-xl py-6 w-full justify-start flex items-center gap-2">
-                        <Settings className="mr-4 h-6 w-6" />
-                        <p className="font-bold">
+                    <Link href="/settings">
+                        <Button variant="ghost" className="border-2 hover:text-white text-gray-600 border-gray-800 hover:bg-blue-500 rounded-xl py-6 w-full justify-start flex items-center gap-2">
+                            <Settings className="mr-4 h-6 w-6" />
                             Setting
-                        </p>
-                    </Button>
+                        </Button>
+                    </Link>
                 </div>
+
             </div>
         </div>
     )

@@ -3,17 +3,18 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Tag } from 'lucide-react';
 import { OnSaleBadge, PurchasedBadge, RequireGamePassBadge } from '@/components/Badges';
-interface Game {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    category: string[];
-    viewerCount: string;
-    badge: string;
+interface GameProps {
+    game: {
+        id: number;
+        name: string;
+        price: number;
+        image: string;
+        category: string[];
+        viewerCount: string;
+        badge: string;
+    }
 }
-const Index: React.FC<IndexProps> = ({ game }) => {
-    console.log("each of the game data", game)
+const Index: React.FC<GameProps> = ({ game }) => {
     return (
         <>
             <div className='relative border-2 border-gray-800 cursor-pointer hover:bg-gray-800  rounded-2xl group overflow-hidden h-96 p-4 w-64'>

@@ -248,7 +248,16 @@ function explore() {
                                 {section.title}
                             </h3>
                             <CarouselComponent className="md:basis-1/2" data={section.games}>
-                                <GameCard />
+                                <GameCard game={{
+                                    id: 0,
+                                    name: '',
+                                    price: 0,
+                                    description: '',
+                                    image: '',
+                                    category: [],
+                                    viewerCount: '',
+                                    badge: ''
+                                }} />
                             </CarouselComponent>
                         </div>
                     ))
@@ -260,7 +269,15 @@ function explore() {
                                 {section.title}
                             </h3>
                             <CarouselComponent className="md:basis-1/5" data={section.games}>
-                                <ProductCard />
+                                <ProductCard game={{
+                                    id: 0,
+                                    name: '',
+                                    price: 0,
+                                    image: '',
+                                    category: [],
+                                    viewerCount: '',
+                                    badge: ''
+                                }} />
                             </CarouselComponent>
                         </div>
                     ))
