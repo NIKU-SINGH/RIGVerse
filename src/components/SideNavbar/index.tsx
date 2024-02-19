@@ -8,7 +8,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Settings, MessageCircleMore, ShoppingCart, Menu, Expand, Gamepad2, TrendingUp, SearchCode } from "lucide-react";
+import { Settings, MessageCircleMore, ShoppingCart, Menu, Expand, Gamepad2, TrendingUp, SearchCode, Clapperboard } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import JoinCard from "@/components/Cards/JoinCard";
 import Link from 'next/link';
@@ -25,18 +25,23 @@ const buttonLinks = [
     },
     {
         title: "Play Now",
-        href: "/games", // Update with the correct path
-        icon: <TrendingUp className="h-6 w-6" />,
+        href: "/game", // Update with the correct path
+        icon: <Gamepad2 className="h-6 w-6" />,
     },
     {
-        title: "Purchase",
-        href: "/purchase", // Update with the correct path
-        icon: <ShoppingCart className="h-6 w-6" />,
+        title: "Studio",
+        href: "/studio", // Update with the correct path
+        icon: <Clapperboard className="h-6 w-6" />,
     },
+    // {
+    //     title: "Purchase",
+    //     href: "/purchase", // Update with the correct path
+    //     icon: <ShoppingCart className="h-6 w-6" />,
+    // },
     {
         title: "Recent Matches",
         href: "/recent-matches", // Update with the correct path
-        icon: <Gamepad2 className="h-6 w-6" />,
+        icon: <TrendingUp className="h-6 w-6" />,
     },
     {
         title: "Chat",
@@ -125,7 +130,7 @@ export function SideNavbar() {
                     :
                     (
                         <div className=" border-r-2 border-gray-700 p-1 w-24 rounded-l-lg h-screen">
-                            <div className="space-y-4">
+                            <div className="space-y-4 flex flex-col items-center justify-center h-screen">
                                 <div className="mt-4">
                                     <Link href='/'>
                                         <Image src='/logo.png' alt='logo' width={250} height={250} />

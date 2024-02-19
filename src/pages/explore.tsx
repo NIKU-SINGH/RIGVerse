@@ -1,4 +1,3 @@
-import CarouselComponent from '@/components/Carousel'
 import React from 'react'
 import Feature from '@/components/Feature'
 import { SideNavbar } from '@/components/SideNavbar'
@@ -7,6 +6,7 @@ import DirectionAwareHoverDemo from '@/components/DirectionAwareHover';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import JoinCard from "@/components/Cards/JoinCard";
+import CarouselComponent from '@/components/Carousel'
 import ProductCard from '@/components/Cards/ProductCard';
 import GameCard from '@/components/Cards/GameCard';
 
@@ -14,6 +14,7 @@ const Catalog = [
     {
         "title": "Best Selling",
         "description": "The most popular games on the platform",
+        "enpoint": "/game",
         "games": [
             {
                 "id": 1,
@@ -92,6 +93,7 @@ const Catalog = [
     {
         "title": "Upcoming Releases",
         "description": "Get ready for these highly anticipated titles coming soon",
+        "enpoint": "/game",
         "games": [
             {
                 "id": 9,
@@ -134,6 +136,7 @@ const Catalog = [
     {
         "title": "Indie Gems",
         "description": "Explore these masterpieces from independent developers",
+        "enpoint": "/game",
         "games": [
             {
                 "id": 13,
@@ -178,6 +181,7 @@ const Catalog = [
 const topRatedGames = [{
     "title": "Top Rated Games",
     "description": "A curated list of the highest-rated games across various genres, celebrated for their engaging gameplay, compelling narratives, and artistic innovation.",
+    "enpoint": "/game",
     "games": [
         {
             "id": 17,
@@ -248,7 +252,7 @@ function explore() {
                                 {section.title}
                             </h3>
                             <CarouselComponent className="md:basis-1/2" data={section.games}>
-                                <GameCard game={{
+                                <GameCard endpoint={section.enpoint} game={{
                                     id: 0,
                                     name: '',
                                     price: 0,
@@ -269,7 +273,7 @@ function explore() {
                                 {section.title}
                             </h3>
                             <CarouselComponent className="md:basis-1/5" data={section.games}>
-                                <ProductCard game={{
+                                <ProductCard endpoint={section.enpoint} className='h-96 w-64' game={{
                                     id: 0,
                                     name: '',
                                     price: 0,

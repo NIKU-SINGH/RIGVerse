@@ -11,12 +11,13 @@ import GlobalChat from "@/components/GlobalChat";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const isRootRoute = router.pathname === '/';
-  const isChatRoute = router.pathname !== '/chat'; // Check if it's not the /chat route
+  const isChatRoute = router.pathname !== '/chat';
+  const isRegisterRoute = router.pathname !== '/register';
 
   return (
     <>
       {isRootRoute && <NavbarDemo />}
-      {isChatRoute && <GlobalChat />} {/* Only render GlobalChat if it's not the /chat route */}
+      {isChatRoute && !isRootRoute && isRegisterRoute && <GlobalChat />} {/* Only render GlobalChat if it's not the /chat route */}
       <Component {...pageProps} />
     </>
   );

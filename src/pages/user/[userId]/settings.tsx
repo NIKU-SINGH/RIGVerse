@@ -67,12 +67,12 @@ function UserSettings() {
                         Profile Image
                     </h2>
                     <div className='flex gap-6'>
-                        <div className='relative h-48 w-48 my-2 overflow-hidden bg-red-400 rounded-full'>
+                        <div className='relative h-48 w-48 my-2 overflow-hidden rounded-full'>
                             <Image src='/background.png' alt='logo' layout='fill' objectFit='cover' />
                         </div>
                         <div className='flex flex-col gap-4 items-start justify-center'>
 
-                            <input
+                            {/* <input
                                 type="file"
                                 onChange={handleImageChange}
                             />
@@ -81,7 +81,22 @@ function UserSettings() {
                             // onClick={}
                             >
                                 Upload
-                            </button>
+                            </button> */}
+                            <form>
+                                <label className="block">
+                                    <span className="sr-only">Choose profile photo</span>
+                                    <input type="file" className="block bg-gray-700 rounded w-[50vw] text-sm text-gray-500
+                            file:me-4 file:py-2 file:px-4
+                            file:rounded-lg file:border-0
+                            file:text-sm file:font-semibold
+                            file:bg-blue-600 file:text-white
+                            hover:file:bg-blue-700
+                            file:disabled:opacity-50 file:disabled:pointer-events-none
+                            dark:file:bg-blue-500
+                            dark:hover:file:bg-blue-400
+    " />
+                                </label>
+                            </form>
                         </div>
                     </div>
 

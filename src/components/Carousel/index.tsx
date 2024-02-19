@@ -13,10 +13,10 @@ import {
 interface Game {
     id: number;
     name: string;
-    price: number;
+    price?: number;
     image: string;
-    category: string[];
-    viewerCount: string;
+    category?: string[];
+    viewerCount?: string;
     badge: string;
 }
 interface CarouselComponentProps {
