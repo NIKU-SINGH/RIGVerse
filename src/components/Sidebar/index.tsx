@@ -25,7 +25,7 @@ export function Sidebar() {
                     <h2 className=" px-7 text-lg font-semibold tracking-tight divide-y mb-2">
                         Direct Messages
                     </h2>
-                    <ScrollArea className="h-[500px] px-1 scrollbar-hide">
+                    <ScrollArea className="h-[550px] px-1 scrollbar-hide">
                         <div className="space-y-1 py-2 px-3">
                             {Array.from({ length: 10 }, (_, index) => (
                                 <OverviewChat key={index} />
@@ -34,14 +34,14 @@ export function Sidebar() {
                     </ScrollArea>
                 </div>
 
-                <div className="absolute bottom-0 flex gap-1 flex-col py-2 px-3 w-full mt-2">
+                {/* <div className="absolute bottom-0 flex gap-1 flex-col py-2 px-3 w-full mt-2">
                     <Link href="/settings">
                         <Button variant="ghost" className="border-2 hover:text-white text-gray-600 border-gray-800 hover:bg-blue-500 rounded-xl py-6 w-full justify-start flex items-center gap-2">
                             <Settings className="mr-4 h-6 w-6" />
                             Setting
                         </Button>
                     </Link>
-                </div>
+                </div> */}
 
             </div>
         </div>

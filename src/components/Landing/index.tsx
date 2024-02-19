@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 
 import Spotlight from "@/components/ui/Spotlight";
 import { SparklesCore } from "@/components/ui/sparkles";
+import { Play, NotebookPen } from "lucide-react";
+import Link from "next/link";
 
 export default function Landing() {
     return (
@@ -13,7 +15,7 @@ export default function Landing() {
                 <div className="w-full absolute inset-0 h-screen">
                     <Spotlight
                         className="-top-40 left-0 md:left-60 md:-top-20"
-                        fill="purple"
+                        fill="blue"
                     />
                     {/* <SparklesCore
                         id="tsparticlesfullpage"
@@ -38,19 +40,18 @@ export default function Landing() {
                         players and developers alike. With a commitment to fostering community engagement and creativity.
                     </p>
                 </div>
-                <div className="w-full flex items-center justify-center mt-8 gap-2 ">
-                    <button className="w-48 relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-                        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full hover:bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                            Play
-                        </span>
-                    </button>
-                    <button className="w-48 relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-                        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full hover:bg-transparent bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                            Register
-                        </span>
-                    </button>
+                <div className="w-full flex items-center justify-center mt-8 gap-4 z-50 ">
+                    <Link href="/explore">
+                        <button className="flex items-center justify-center w-48 h-12 bg-blue-500 cursor-pointer hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-xl">
+                            <Play className="mr-2" size={16} /> Play
+                        </button>
+                    </Link>
+                    <Link href="/register">
+                        <button className="flex items-center justify-center w-48 h-12 border-2 cursor-pointer border-gray-700 bg-gray-800 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-xl">
+                            <NotebookPen className="mr-2" size={16} /> Register
+                        </button>
+                    </Link>
+
 
                     {/* <button className="p-[3px] relative w-96 rounded-full">
                     <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500 to-purple-500" />

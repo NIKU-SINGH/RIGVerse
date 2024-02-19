@@ -47,9 +47,9 @@ const components: { title: string; href: string; description: string }[] = [
 
 function index() {
     return (
-        <div className='w-full mt-4 p-2 flex items-center justify-center'>
+        <div className='w-full mt-4 p-2 flex items-center justify-left'>
             <NavigationMenu>
-                <NavigationMenuList className=''>
+                <NavigationMenuList className='px-6 md:px-36'>
 
                     <NavigationMenuItem className='w-96'>
                         <Link href='/'>
@@ -57,7 +57,7 @@ function index() {
                         </Link>
                     </NavigationMenuItem>
 
-                    {components.map((component) => (
+                    {/* {components.map((component) => (
                         <NavigationMenuItem key={component.title}>
                             <NavigationMenuLink href={component.href}>
                                 <div className='mx-2 text-white hover:border-b-2'>
@@ -65,16 +65,16 @@ function index() {
                                 </div>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
-                    ))}
+                    ))} */}
 
-                    <div className='flex w-96 items-center justify-center gap-4'>
+                    {/* <div className='flex w-96 items-center justify-center gap-4'>
                         <NavigationMenuItem>
-                            <Button className='bg-primary'>Donate</Button>
+                            <Button className='bg-primary rounded-2xl m'>Donate</Button>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <Button>Register</Button>
+                            <Button className='bg-primary rounded-2xl w-48'>Register</Button>
                         </NavigationMenuItem>
-                    </div>
+                    </div> */}
                 </NavigationMenuList>
             </NavigationMenu>
 

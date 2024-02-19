@@ -13,7 +13,7 @@ const Index: React.FC<IndexProps> = ({ message }) => {
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
                 {/* Replied meessage */}
-                <div className="flex items-center rounded-lg p-2 px-4 bg-gray-800 border-2 border-gray-700  max-w-md mx-auto text-white">
+                <div className="flex items-center rounded-lg p-2 px-4 bg-gray-800 border-2 border-gray-700  max-w-md mx-auto text-white break-words overflow-hidden w-full">
                     {message}
                 </div>
             </div>

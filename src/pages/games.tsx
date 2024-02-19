@@ -5,20 +5,18 @@ import { SideNavbar } from '@/components/SideNavbar'
 import NavbarDemo from "@/components/Navbar/globalNavbar";
 function Games() {
   return (
-    <div className='flex'>
+    <div className='flex w-full overflow-hidden'>
       <SideNavbar />
-      <div className='flex flex-col'>
-        <NavbarDemo />
-        <div className={`flex px-2 w-full`}>
 
-        </div>
+      <div className='flex w-full flex-col'>
+        {/* Actual Game area */}
+
+
       </div>
 
     </div>
 
-
-
-  );
+  )
 }
 
 export default Games;

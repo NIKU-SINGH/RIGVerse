@@ -12,7 +12,7 @@ const Index: React.FC<IndexProps> = ({ message }) => {
                     <AvatarImage src="https://github.com/shadcn.png" />
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
-                <div className="flex items-center bg-blue-500 rounded-lg p-2 px-4 max-w-md mx-auto text-white whitespace-normal break-words">
+                <div className="flex items-center bg-blue-500 rounded-lg p-2 px-4 max-w-md mx-auto text-white whitespace-normal break-words overflow-hidden w-full">
                     {message}
                 </div>
             </div>

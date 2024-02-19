@@ -24,8 +24,8 @@ const buttonLinks = [
         icon: <SearchCode className="h-6 w-6" />,
     },
     {
-        title: "Trending",
-        href: "/trending", // Update with the correct path
+        title: "Play Now",
+        href: "/games", // Update with the correct path
         icon: <TrendingUp className="h-6 w-6" />,
     },
     {
@@ -34,8 +34,8 @@ const buttonLinks = [
         icon: <ShoppingCart className="h-6 w-6" />,
     },
     {
-        title: "Battle History",
-        href: "/battle-history", // Update with the correct path
+        title: "Recent Matches",
+        href: "/recent-matches", // Update with the correct path
         icon: <Gamepad2 className="h-6 w-6" />,
     },
     {
@@ -45,7 +45,7 @@ const buttonLinks = [
     },
     {
         title: "Setting",
-        href: "/settings", // Update with the correct path
+        href: "/user/12334343asQ/settings", // Update with the correct path
         icon: <Settings className="h-6 w-6" />,
     },
 ];
@@ -69,7 +69,7 @@ export function SideNavbar() {
                                         </Link>
                                         <Menu
                                             onClick={() => setToggle(!toggle)}
-                                            size={24} className="text-gray-300 cursor-pointer"
+                                            size={24} className="text-gray-200 cursor-pointer ml-6"
                                         />
                                     </div>
 
@@ -77,7 +77,7 @@ export function SideNavbar() {
                                         {
                                             buttonLinks.map((link) => (
                                                 <Link key={link.title} href={link.href}>
-                                                    <Button key={link.title} variant="ghost" className="w-full justify-start hover:bg-primary hover:text-white flex gap-4 rounded-xl">
+                                                    <Button key={link.title} variant="ghost" className="w-full justify-start hover:bg-blue-500 hover:text-white flex gap-4 rounded-xl">
                                                         {link.icon}
                                                         <p className="font-bold">{link.title}</p>
                                                     </Button>
@@ -126,15 +126,22 @@ export function SideNavbar() {
                     (
                         <div className=" border-r-2 border-gray-700 p-1 w-24 rounded-l-lg h-screen">
                             <div className="space-y-4">
+                                <div className="mt-4">
+                                    <Link href='/'>
+                                        <Image src='/logo.png' alt='logo' width={250} height={250} />
+                                    </Link>
+                                </div>
+
                                 <div className="px-3 py-2">
-                                    <div className="flex items-center mb-4 p-2 ">
+                                    <div className="flex items-center mb-4 p-1 ">
+
                                         <Expand
                                             onClick={() => setToggle(!toggle)}
-                                            size={24} className="text-gray-500 ml-2 items-center justify-center flex cursor-pointer"
+                                            size={24} className="text-gray-200 ml-2 items-center justify-center flex cursor-pointer"
                                         />
                                     </div>
 
-                                    <div className="space-y-3 text-gray-500">
+                                    <div className="space-y-3 text-gray-200">
                                         <Button variant="ghost" className="w-full hover:bg-primary hover:text-white">
                                             <SearchCode className="h-6 w-6" />
                                         </Button>
@@ -155,10 +162,14 @@ export function SideNavbar() {
                                             <MessageCircleMore className=" h-6 w-6" />
 
                                         </Button>
-                                        <Button variant="ghost" className="w-full hover:bg-primary hover:text-white">
-                                            <Settings className="h-6 w-6" />
 
-                                        </Button>
+                                        <Link href="/user/123/settings">
+                                            <Button variant="ghost" className="w-full hover:bg-primary hover:text-white">
+                                                <Settings className="h-6 w-6" />
+                                            </Button>
+                                        </Link>
+
+
                                     </div>
                                 </div>
 
