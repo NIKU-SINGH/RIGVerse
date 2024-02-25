@@ -12,12 +12,12 @@ function Register() {
             {/* Content */}
             <NavbarDemo />
             <div className="relative flex w-full">
-                <div className="h-screen w-1/2 rounded-2xl flex flex-col items-center justify-center">
+                <div className="h-screen w-full rounded-2xl flex flex-col items-center justify-center">
                     <UserSignUp />
                 </div>
-                <div className="h-screen w-1/2 rounded-2xl flex flex-col items-center justify-center">
+                {/* <div className="h-screen w-1/2 rounded-2xl flex flex-col items-center justify-center">
                     <StudioSignup />
-                </div>
+                </div> */}
             </div>
         </div>
     );
