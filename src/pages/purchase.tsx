@@ -1,5 +1,5 @@
 import MatchCard from '@/components/Cards/MatchCard'
-import { SideNavbar } from '@/components/SideNavbar'
+import { SideNavbar } from '@/components/Sidebar/SideNavbar'
 import React from 'react'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import PlayCard from '@/components/Cards/PlayCard'

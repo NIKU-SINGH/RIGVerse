@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { SideNavbar } from '@/components/SideNavbar';
+import { SideNavbar } from '@/components/Sidebar/SideNavbar';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from 'next/image';
 

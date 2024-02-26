@@ -14,8 +14,8 @@ import JoinCard from "@/components/Cards/JoinCard";
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from "react";
-import MatchCard from "../Cards/MatchCard";
-import PlayCard from "../Cards/PlayCard";
+import MatchCard from "../../Cards/MatchCard";
+import PlayCard from "../../Cards/PlayCard";
 
 const buttonLinks = [
     {
@@ -56,7 +56,7 @@ const buttonLinks = [
 ];
 
 
-export function SideNavbar() {
+export default function CreateGameSidebar() {
     const [toggle, setToggle] = useState(true)
     // THis is is a coomment
     return (
@@ -65,7 +65,7 @@ export function SideNavbar() {
             {
                 toggle ?
                     (
-                        <div className="border-r-2 border-gray-700  p-1 w-36 md:p-2 md:w-64 rounded-l-lg">
+                        <div className="h-screen border-r-2 border-gray-700  p-1 w-36 md:p-2 md:w-64 rounded-l-lg">
                             <div className="space-y-4 divide-y-2 divide-gray-700">
                                 <div className="px-3 py-2">
                                     <div className="flex items-center mb-4 p-2 ">
@@ -91,38 +91,6 @@ export function SideNavbar() {
                                         }
 
                                     </div>
-                                </div>
-
-                                <div className="py-2 px-3">
-                                    <h2 className="relative text-lg font-semibold tracking-tight text-gray-200 text-left">
-                                        Last Game
-                                    </h2>
-                                    <ScrollArea className="h-[250px] px-1">
-                                        <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                        <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                        <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                        <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                        <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                        <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                    </ScrollArea>
-                                </div>
-                                <div className="py-2 px-3">
-                                    <h2 className="relative text-lg font-semibold tracking-tight text-gray-200 text-left">
-                                        Recent Play history
-                                    </h2>
-                                    <ScrollArea className="h-[250px] px-1">
-                                        <PlayCard name="Valorant" imageUrl="/games/valorant1.jpg" />
-                                        <PlayCard name="Call of Duty" imageUrl="/games/codPoster.jpg" />
-                                        <PlayCard name="Call of Duty" imageUrl="/games/codmw.jpg" />
-                                        <PlayCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
-                                        <PlayCard name="Assasins Creed" imageUrl="/games/creed4.jpg" />
-                                        <PlayCard name="FIFA 23" imageUrl="/games/fifa23.jpeg" />
-                                        <PlayCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
-                                        <PlayCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
-                                    </ScrollArea>
-                                </div>
-                                <div className="py-2 px-3">
-                                    <JoinCard />
                                 </div>
                             </div>
                         </div>

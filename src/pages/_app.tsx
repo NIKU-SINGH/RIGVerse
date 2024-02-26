@@ -5,7 +5,7 @@ import GlobalNavbar from "@/components/Navbar/globalNavbar";
 import LeftCollapsible from "@/components/Collapsible/Left";
 import RightCollapsible from "@/components/Collapsible/Right";
 import { useRouter } from 'next/router'; // Import useRouter
-import { SideNavbar } from "@/components/SideNavbar";
+import { SideNavbar } from "@/components/Sidebar/SideNavbar";
 import GlobalChat from "@/components/GlobalChat";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -13,11 +13,12 @@ export default function App({ Component, pageProps }: AppProps) {
   const isRootRoute = router.pathname === '/';
   const isChatRoute = router.pathname !== '/chat';
   const isRegisterRoute = router.pathname !== '/register';
+  const isStudioRegisterRoute = router.pathname !== '/studio-register';
 
   return (
     <>
       {isRootRoute && <NavbarDemo />}
-      {isChatRoute && !isRootRoute && isRegisterRoute && <GlobalChat />} {/* Only render GlobalChat if it's not the /chat route */}
+      {isChatRoute && !isRootRoute && isRegisterRoute && isStudioRegisterRoute && <GlobalChat />} {/* Only render GlobalChat if it's not the /chat route */}
       <Component {...pageProps} />
     </>
   );

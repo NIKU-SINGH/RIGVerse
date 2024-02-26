@@ -1,7 +1,7 @@
 import React from 'react';
 import { Sidebar } from '@/components/Sidebar';
 import ChatBox from '@/components/ChatBox';
-import { SideNavbar } from '@/components/SideNavbar'
+import { SideNavbar } from '@/components/Sidebar/SideNavbar'
 import NavbarDemo from "@/components/Navbar/globalNavbar";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import PlayCard from '@/components/Cards/PlayCard'

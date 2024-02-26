@@ -2,7 +2,7 @@ import React from 'react';
 import { StudioSignup } from '@/components/Register/Studio';
 import { UserSignUp } from '@/components/Register/User';
 import NavbarDemo from "@/components/Navbar/mainNavBar";
-import { SideNavbar } from '@/components/SideNavbar';
+import { SideNavbar } from '@/components/Sidebar/SideNavbar';
 import { useRouter } from 'next/router';
 
 function StudioPannel() {

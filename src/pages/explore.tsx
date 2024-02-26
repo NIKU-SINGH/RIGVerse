@@ -1,6 +1,6 @@
 import React from 'react'
 import Feature from '@/components/Feature'
-import { SideNavbar } from '@/components/SideNavbar'
+import { SideNavbar } from '@/components/Sidebar/SideNavbar'
 import NavbarDemo from "@/components/Navbar/globalNavbar"; // Import the Navbar component
 import DirectionAwareHoverDemo from '@/components/DirectionAwareHover';
 import Image from 'next/image';
