@@ -11,7 +11,7 @@ function Index() {
                 <StudioSidebar />
                 <div className='flex flex-col px-4 w-full mt-10'>
                     <div className='w-full bg-orange-500 p-4 rounded-2xl'>
-                        <h1 className='text-2xl text-gray-200 font-semibold'>Individual game profile</h1>
+                        <h1 className='text-2xl text-gray-200 font-semibold'>Analytics</h1>
                     </div>
 
                 </div>

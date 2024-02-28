@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { SideNavbar } from '@/components/Sidebar/SideNavbar';
+import UserSidebar from '@/components/Sidebar/UserSidebar';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from 'next/image';
 
@@ -41,7 +41,7 @@ function UserSettings() {
 
     return (
         <div className='flex w-full overflow-hidden'>
-            <SideNavbar />
+            <UserSidebar />
 
             <div className='flex flex-col px-4 mt-10 w-full text-gray-200'>
                 <div className="w-full border-2 border-gray-800 bg-blue-500 rounded-xl h-10 md:h-16 p-4 flex items-center mb-4 justify-between">

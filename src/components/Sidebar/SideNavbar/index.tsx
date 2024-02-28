@@ -8,7 +8,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Settings, MessageCircleMore, ShoppingCart, Menu, Expand, Gamepad2, TrendingUp, SearchCode, Clapperboard } from "lucide-react";
+import { Settings, MessageCircleMore, ShoppingCart, Menu, Expand, Gamepad2, TrendingUp, SearchCode, Clapperboard, User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import JoinCard from "@/components/Cards/JoinCard";
 import Link from 'next/link';
@@ -49,9 +49,9 @@ const buttonLinks = [
         icon: <MessageCircleMore className="h-6 w-6" />,
     },
     {
-        title: "Setting",
-        href: "/user/12334343asQ/settings", // Update with the correct path
-        icon: <Settings className="h-6 w-6" />,
+        title: "Profile",
+        href: "/user/12334343asQ", // Update with the correct path
+        icon: <User className="h-6 w-6" />,
     },
 ];
 
