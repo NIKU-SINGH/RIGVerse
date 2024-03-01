@@ -11,7 +11,8 @@ import RemotePeer from "@/lib/huddle/RemotePeer";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Mic2, PhoneMissed } from "lucide-react";
-const huddle = () => {
+
+const Huddle = () => {
   const [roomID, setRoomID] = useState<string>("");
   const [token, setToken] = useState<string | null>(null);
   const { peerIds } = usePeerIds();
@@ -144,4 +145,4 @@ const huddle = () => {
   );
 };
 
-export default huddle;
+export default Huddle;
