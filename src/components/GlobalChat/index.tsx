@@ -21,7 +21,6 @@ function Modal({ open, onClose }: { open: boolean, onClose: () => void }) {
                         <div className={`flex w-full mt-6`}>
                             <Sidebar />
                             <div className='hidden md:inline-block w-full'>
-
                                 <ChatBox />
                             </div>
 

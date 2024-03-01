@@ -34,7 +34,7 @@ function ChatBox() {
         //     });
         //     const answer: string = res.data.response.text;
         //     setReplies((prevState: responseSchema[]) => {
-        //         return prevState.map((entry) =>
+        //         return prevState.map((entry) =>z
         //             entry.userMessage === userMessage ? { ...entry, replies: [] } : entry
         //         );
         //     });
