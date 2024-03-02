@@ -87,7 +87,9 @@ const Catalog = [
 function Studio() {
     return (
         <div className='flex w-full overflow-hidden'>
-            <SideNavbar />
+            <div className=' w-36 md:p-2 md:w-64'>
+                <SideNavbar />
+            </div>
 
             <div className='flex flex-col px-4 w-full mt-10'>
                 <div className='w-full'>

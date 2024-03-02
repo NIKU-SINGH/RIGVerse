@@ -49,7 +49,7 @@ export default function CreateGameSidebar() {
     // THis is is a coomment
     return (
         <div className="">
-            <div className="relative h-screen border-r-2 border-gray-700  p-1 w-36 md:p-2 md:w-64 rounded-l-lg">
+            <div className="fixed  h-screen border-r-2 border-gray-700  p-1 w-36 md:p-2 md:w-64 rounded-l-lg">
                 <div className="space-y-4 divide-y-2 divide-gray-700">
                     <div className="px-3 py-2">
                         <div className="flex items-center mb-4 p-2 ">
@@ -66,7 +66,7 @@ export default function CreateGameSidebar() {
                             {
                                 buttonLinks.map((link) => (
                                     <Link key={link.title} href={link.href}>
-                                        <Button key={link.title} variant="ghost" className="w-full justify-start hover:bg-orange-500 hover:text-white flex gap-4 rounded-xl">
+                                        <Button key={link.title} variant="ghost" className="w-full justify-start hover:bg-purple-500 hover:text-white flex gap-4 rounded-xl">
                                             {link.icon}
                                             <p className="font-bold">{link.title}</p>
                                         </Button>
@@ -77,7 +77,7 @@ export default function CreateGameSidebar() {
                         </div>
                         <div className="absolute bottom-10 w-52 space-y-3 text-gray-500 flex flex-col">
                             <Link key="Setting" href="/user/12334343asQ/settings">
-                                <Button variant="ghost" className="w-full justify-start hover:bg-orange-500 hover:text-white flex gap-4 rounded-xl">
+                                <Button variant="ghost" className="w-full justify-start hover:bg-purple-500 hover:text-white flex gap-4 rounded-xl">
                                     <Settings className="h-6 w-6" />
                                     <p className="font-bold">Settings</p>
                                 </Button>

@@ -10,6 +10,7 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel"
 
+
 interface Game {
     id: number;
     name: string;
