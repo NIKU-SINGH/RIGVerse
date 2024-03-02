@@ -8,11 +8,11 @@ function Index() {
     return (
         <div>
             <div className='flex'>
-                <div className=' w-36 md:p-2 md:w-64'>
+                <div>
                     <UserSidebar />
                 </div>
                 <div className='flex flex-col px-4 w-full mt-10'>
-                    <div className='w-full bg-purple-500 p-4 rounded-2xl'>
+                    <div className=' bg-purple-500 p-4 rounded-2xl'>
                         <h1 className='text-2xl text-gray-200 font-semibold'>Create a post</h1>
                     </div>
 

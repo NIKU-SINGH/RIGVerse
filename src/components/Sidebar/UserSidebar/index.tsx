@@ -49,7 +49,7 @@ export default function CreateGameSidebar() {
     // THis is is a coomment
     return (
         <div className="">
-            <div className="fixed  h-screen border-r-2 border-gray-700  p-1 w-36 md:p-2 md:w-64 rounded-l-lg">
+            <div className="  h-screen border-r-2 border-gray-700  p-1 w-36 md:p-2 md:w-64 rounded-l-lg">
                 <div className="space-y-4 divide-y-2 divide-gray-700">
                     <div className="px-3 py-2">
                         <div className="flex items-center mb-4 p-2 ">

@@ -14,7 +14,6 @@ const Post = () => {
                         className="h-64 w-64 object-cover"
 
                     />
-                    <i className="fas fa-square absolute right-0 top-0 m-1"></i>
                     <div className="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute left-0 top-0 hidden">
                         <div className="flex justify-center items-center space-x-4 h-full">
                             <span className="p-2">

@@ -41,7 +41,9 @@ function UserSettings() {
 
     return (
         <div className='flex w-full overflow-hidden'>
-            <UserSidebar />
+            <div className=' w-36 md:p-2 md:w-64'>
+                <UserSidebar />
+            </div>
 
             <div className='flex flex-col px-4 mt-10 w-full text-gray-200'>
                 <div className="w-full border-2 border-gray-800 bg-blue-500 rounded-xl h-10 md:h-16 p-4 flex items-center mb-4 justify-between">

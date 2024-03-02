@@ -182,7 +182,6 @@ export function SideNavbar() {
                         </div>
                     )
             }
-
         </div>
     )
 }
