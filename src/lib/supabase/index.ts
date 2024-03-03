@@ -128,7 +128,7 @@ export async function fetchtoMessage(address: string) {
   }
 }
 
-// *************Fetch to message*********************
+// *************Fetch from message*********************
 
 export async function fetchfromMessage(address: string) {
   let { data: chats, error } = await supabase
@@ -143,7 +143,34 @@ export async function fetchfromMessage(address: string) {
     // Handle success
   }
 }
-// *************User SignIn*********************
+
+// *************Insert Post*********************
+
+interface Post {
+  title: string;
+  content: string;
+  address: string;
+  image: string;
+  visibility: boolean;
+  tags: string[];
+  nft_address: string;
+}
+
+export const insertPost = async (postData: Post) => {
+  console.log(postData);
+  const { data, error } = await supabase
+    .from("chats")
+    .insert([postData])
+    .select();
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    // Handle success
+    console.log(data);
+  }
+};
+
 // *************User SignIn*********************
 // *************User SignIn*********************
 

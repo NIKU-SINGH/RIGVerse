@@ -92,7 +92,7 @@ export function SideNavbar() {
   // THis is is a coomment
   const router = useRouter();
   const { studioId } = router.query;
-  console.log("Studio ID", studioId);
+  // console.log("Studio ID", studioId);
   return (
     <div className="">
       {toggle ? (
