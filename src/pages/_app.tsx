@@ -8,6 +8,7 @@ import { useRouter } from "next/router"; // Import useRouter
 import { SideNavbar } from "@/components/Sidebar/SideNavbar";
 import GlobalChat from "@/components/GlobalChat";
 import { HuddleClient, HuddleProvider } from "@huddle01/react";
+import { MoralisProvider } from "react-moralis";
 
 const huddleClient = new HuddleClient({
   projectId: process.env.NEXT_PUBLIC_PROJECT_ID || "",
@@ -22,15 +23,17 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <HuddleProvider client={huddleClient}>
-        {isRootRoute && <NavbarDemo />}
-        {isChatRoute &&
-          !isRootRoute &&
-          isRegisterRoute &&
-          isStudioRegisterRoute && <GlobalChat />}{" "}
-        {/* Only render GlobalChat if it's not the /chat route */}
-        <Component {...pageProps} />
-      </HuddleProvider>
+      <MoralisProvider initializeOnMount={false}>
+        <HuddleProvider client={huddleClient}>
+          {isRootRoute && <NavbarDemo />}
+          {isChatRoute &&
+            !isRootRoute &&
+            isRegisterRoute &&
+            isStudioRegisterRoute && <GlobalChat />}{" "}
+          {/* Only render GlobalChat if it's not the /chat route */}
+          <Component {...pageProps} />
+        </HuddleProvider>
+      </MoralisProvider>
     </>
   );
 }
