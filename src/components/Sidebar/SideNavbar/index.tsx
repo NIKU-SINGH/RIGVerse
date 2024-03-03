@@ -161,7 +161,7 @@ export function SideNavbar() {
                                         :
                                         (
                                                 <div className=" border-r-2 border-gray-700 p-1 w-24 rounded-l-lg h-screen">
-                                                        <div className="space-y-4 flex flex-col items-center justify-center h-screen">
+                                                        <div className="space-y-4 flex flex-col h-screen">
                                                                 <div className="mt-4">
                                                                         <Link href='/'>
                                                                                 <Image src='/logo.png' alt='logo' width={250} height={250} />
@@ -169,43 +169,36 @@ export function SideNavbar() {
                                                                 </div>
 
                                                                 <div className="px-3 py-2">
-                                                                        <div className="flex items-center mb-4 p-1 ">
-
+                                                                        {/* <div>
                                                                                 <Expand
                                                                                         onClick={() => setToggle(!toggle)}
-                                                                                        size={24} className="text-gray-200 ml-2 items-center justify-center flex cursor-pointer"
+                                                                                        className="h-6 w-6 text-gray-200 "
                                                                                 />
+                                                                        </div> */}
+                                                                        <div className=" my-2 text-gray-500 flex flex-col">
+                                                                                        <Button  onClick={() => setToggle(!toggle)} variant="ghost" className="w-full justify-start hover:bg-blue-500 hover:text-white flex gap-4 rounded-xl">
+                                                                                                <Expand className="h-6 w-6" />
+                                                                                        </Button>
                                                                         </div>
 
-                                                                        <div className="space-y-3 text-gray-200">
-                                                                                <Button variant="ghost" className="w-full hover:bg-primary hover:text-white">
-                                                                                        <SearchCode className="h-6 w-6" />
-                                                                                </Button>
-                                                                                <Button variant="ghost" className="w-full t hover:bg-primary hover:text-white">
-                                                                                        <TrendingUp className=" h-6 w-6" />
+                                                                        <div className="space-y-3 text-gray-500 flex flex-col">
+                                                                                {
+                                                                                        buttonLinks.map((link) => (
+                                                                                                <Link key={link.title} href={link.href}>
+                                                                                                        <Button key={link.title} variant="ghost" className="w-full justify-start hover:bg-blue-500 hover:text-white flex gap-4 rounded-xl">
+                                                                                                                {link.icon}
+                                                                                                        </Button>
+                                                                                                </Link>
+                                                                                        ))
+                                                                                }
 
-
-                                                                                </Button>
-                                                                                <Button variant="ghost" className="w-full  hover:bg-primary hover:text-white">
-                                                                                        <ShoppingCart className=" h-6 w-6" />
-
-                                                                                </Button>
-                                                                                <Button variant="ghost" className="w-full  hover:bg-primary hover:text-white">
-                                                                                        <Gamepad2 className=" h-6 w-6" />
-
-                                                                                </Button>
-                                                                                <Button variant="ghost" className="w-full  hover:bg-primary hover:text-white">
-                                                                                        <MessageCircleMore className=" h-6 w-6" />
-
-                                                                                </Button>
-
-                                                                                <Link href="/user/123/settings">
-                                                                                        <Button variant="ghost" className="w-full hover:bg-primary hover:text-white">
+                                                                        </div>
+                                                                        <div className="border-2 border-gray-700 rounded-2xl absolute bottom-10 text-gray-500 flex flex-col">
+                                                                                <Link key="Setting" href="/settings">
+                                                                                        <Button variant="ghost" className="w-full justify-start hover:bg-blue-500 hover:text-white flex gap-4 rounded-xl">
                                                                                                 <Settings className="h-6 w-6" />
                                                                                         </Button>
                                                                                 </Link>
-
-
                                                                         </div>
                                                                 </div>
 
