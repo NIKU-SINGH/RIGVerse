@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, MouseEvent } from "react";
+import { useState, ChangeEvent, MouseEvent, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
@@ -8,7 +8,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Header from "./components/Header";
 import UserMessageCard from "./components/MessageCards/UserMessageCard";
 import FriendMessageCard from "./components/MessageCards/FriendMessageCard";
-import { insertMessage } from "@/lib/supabase";
+import {
+  fetchfromMessage,
+  fetchtoMessage,
+  insertMessage,
+} from "@/lib/supabase";
+import { useMoralis } from "react-moralis";
 interface responseSchema {
   userMessage?: string;
   replies?: string;
@@ -16,15 +21,30 @@ interface responseSchema {
 }
 
 function ChatBox() {
+  const { account } = useMoralis();
   const [userMessage, setUserMessage] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
   const [replies, setReplies] = useState<responseSchema[]>([]);
 
   const sendMessage = async () => {};
 
+  useEffect(() => {
+    const fetchMessage = async () => {
+      fetchtoMessage("addr1");
+      fetchfromMessage("0xc5e37e8821c7a5d80c542a826d1a1a595b40fe8e");
+    };
+    fetchMessage();
+  }, []);
+
+  const sortChatData = () => {};
+
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    await insertMessage();
+    await insertMessage({
+      to: account || "",
+      from: account || "",
+      message: userMessage || "",
+    });
     // console.log("The message is", userMessage, loading);
     // setReplies((prevState: responseSchema[]) => {
     //   return [...prevState, { userMessage }];
