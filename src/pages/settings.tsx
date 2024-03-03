@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import UserSidebar from "@/components/Sidebar/UserSidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
-import { Facebook, Twitter, GitHub, Dribbble, Settings } from 'lucide-react';
 import { SideNavbar } from "@/components/Sidebar/SideNavbar";
 
 function UserSettings() {
