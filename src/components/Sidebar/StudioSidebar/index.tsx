@@ -64,6 +64,11 @@ export default function CreateGameSidebar() {
             href: `/studio/${studioId}/`, // Update with the correct path
             icon: <User className="h-6 w-6" />,
         },
+        // {
+        //     title: "Back",
+        //     href: `/home`, // Update with the correct path
+        //     icon: <User className="h-6 w-6" />,
+        // },
     ];
 
     // THis is is a coomment
@@ -96,7 +101,7 @@ export default function CreateGameSidebar() {
 
                         </div>
                         <div className="absolute bottom-10 w-52 space-y-3 text-gray-500 flex flex-col">
-                            <Link key="Setting" href="/user/12334343asQ/settings">
+                            <Link key="Setting" href="/studio/12334343asQ/settings">
                                 <Button variant="ghost" className="w-full justify-start hover:bg-orange-500 hover:text-white flex gap-4 rounded-xl">
                                     <Settings className="h-6 w-6" />
                                     <p className="font-bold">Settings</p>

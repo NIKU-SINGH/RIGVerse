@@ -4,6 +4,7 @@ import UserSidebar from "@/components/Sidebar/UserSidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { Facebook, Twitter, GitHub, Dribbble, Settings } from 'lucide-react';
+import { SideNavbar } from "@/components/Sidebar/SideNavbar";
 
 function UserSettings() {
         const router = useRouter();
@@ -44,11 +45,10 @@ function UserSettings() {
 
         return (
                 <div className="flex w-full overflow-hidden">
-                        <div className=" w-36 md:p-2 md:w-64">
-                                <UserSidebar />
+                        <div className='fixed'>
+                                <SideNavbar />
                         </div>
-
-                        <div className="mx-4 flex flex-col px-4 mt-10 w-full text-gray-200">
+                        <div className='flex w-full ml-32 md:ml-64 flex-col px-4 mt-4'>
                                 {/* Headiung */}
                                 <div className="w-full bg-purple-500 p-4 rounded-2xl">
                                         <h1 className="text-2xl text-gray-200 font-semibold">
