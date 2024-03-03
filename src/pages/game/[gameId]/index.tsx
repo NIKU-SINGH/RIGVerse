@@ -14,7 +14,7 @@ function GameArena() {
                         <div className='fixed'>
                                 <SideNavbar />
                         </div>
-                        <div className='flex w-full ml-32 md:ml-64 flex-col'>
+                        <div className='flex w-full ml-32 md:ml-64 flex-col px-4 mt-4'>
                                 <div className='w-full'>
                                         <h1 className='text-3xl text-gray-200 font-bold'>Game : {gameId}</h1>
                                 </div>

@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar/mainNavBar";
 import Landing from "@/components/Landing";
-import CTA from "@/components/CTA";
+// import CTA from "@/components/CTA";
 import Feature from "@/components/Feature";
 import BackgroundGradient from "@/components/BackgroundGradient";
 import { useCallback, useEffect } from "react";
