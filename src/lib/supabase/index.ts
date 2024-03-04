@@ -53,13 +53,15 @@ export const fetchuserAddr = async () => {
 
 // *************Insert User Data*********************
 
-interface UserData {
+export interface UserData {
   id: string;
   name: string;
   email: string;
   bio: string;
   studio: boolean;
   address: string;
+  followers: number;
+  following: number;
 }
 // const udata = {
 //   id: "bd29e902-48e4-43c2-b195-d705311d48f6",
@@ -146,11 +148,11 @@ export async function fetchfromMessage(address: string) {
 
 // *************Insert Post*********************
 
-interface Post {
+export interface Post {
   title: string;
   content: string;
   address: string;
-  image: string;
+  images: string;
   visibility: boolean;
   tags: string[];
   nft_address: string;
@@ -159,7 +161,7 @@ interface Post {
 export const insertPost = async (postData: Post) => {
   console.log(postData);
   const { data, error } = await supabase
-    .from("chats")
+    .from("posts")
     .insert([postData])
     .select();
   if (error) {
@@ -167,10 +169,84 @@ export const insertPost = async (postData: Post) => {
     console.log(error);
   } else {
     // Handle success
-    console.log(data);
+    return data[0]?.id;
   }
 };
 
+// *************Fetch All Post*********************
+
+export const fetchAllPost = async () => {
+  const { data, error } = await supabase.from("posts").select("*");
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    // Handle success
+    // console.log(data);
+    return data;
+  }
+};
+// *************Fetch User Post*********************
+
+export const fetchUserPost = async (address: string) => {
+  const { data, error } = await supabase
+    .from("posts")
+    .select("*")
+    .eq("address", address);
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    // Handle success
+    // console.log(data);
+    return data;
+  }
+};
+// *************Fetch All User Data*********************
+
+export const fetchUserData = async (address: string) => {
+  const { data, error } = await supabase
+    .from("users")
+    .select("*")
+    .eq("address", address);
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    // Handle success
+    // console.log(data);
+    return data[0];
+  }
+};
+
+// *************Insert advertise*********************
+
+interface Ads {
+  id: string;
+  amount: number;
+  time: number;
+  score: number;
+}
+
+export const insertAds = async (adsData: Ads) => {
+  console.log(adsData);
+  const { data, error } = await supabase
+    .from("adsense")
+    .insert([adsData])
+    .select();
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    // Handle success
+    console.log(data);
+    return data;
+  }
+};
+
+// *************User SignIn*********************
+// *************User SignIn*********************
+// *************User SignIn*********************
 // *************User SignIn*********************
 // *************User SignIn*********************
 

@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 const svgToDataUri = require("mini-svg-data-uri");
 
 const colors = require("tailwindcss/colors");
@@ -9,10 +9,10 @@ const {
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -73,7 +73,6 @@ const config = {
         secondaryButton: {
           DEFAULT: "hsl(var(--secondary-button))",
         },
-
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -91,11 +90,11 @@ const config = {
         },
         shimmer: {
           from: {
-            "backgroundPosition": "0 0"
+            backgroundPosition: "0 0",
           },
           to: {
-            "backgroundPosition": "-200% 0"
-          }
+            backgroundPosition: "-200% 0",
+          },
         },
         spotlight: {
           "0%": {
@@ -180,7 +179,7 @@ const config = {
       );
     },
   ],
-} satisfies Config
+} satisfies Config;
 
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
@@ -193,4 +192,4 @@ function addVariablesForColors({ addBase, theme }: any) {
   });
 }
 
-export default config
+export default config;

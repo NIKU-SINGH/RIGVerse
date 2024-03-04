@@ -132,6 +132,8 @@ export function UserSignIn() {
         bio: values.bio,
         address: account,
         studio: selected,
+        followers: 0,
+        following: 0,
       };
       await insertUserData(userData);
 
