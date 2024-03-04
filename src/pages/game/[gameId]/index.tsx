@@ -8,7 +8,7 @@ import { Contact, Play, ShoppingCart } from 'lucide-react';
 function GameArena() {
         const router = useRouter();
         const game = router.query;
-        console.log("query is",game);
+        console.log("query is", game);
         return (
                 <div className='flex w-full overflow-hidden'>
                         <div className='fixed'>
@@ -23,7 +23,7 @@ function GameArena() {
                                         <div className="relative h-full w-full cursor-pointer overflow-hidden rounded-2xl group">
                                                 {/* Image with conditional blur on hover */}
                                                 <Image
-                                                        src={game?.image}
+                                                        src={game!.image as string || '/games/cypherpunk.jpg'}
                                                         alt="feature"
                                                         height={5000}
                                                         width={5000}
