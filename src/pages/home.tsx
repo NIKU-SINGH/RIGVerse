@@ -62,7 +62,7 @@ function Index() {
               <div className="py-2 px-3 flex justify-center">
                 <ScrollArea className="w-3/4 px-1">
                   {postData?.map((item) => {
-                    return <InstagramPost data={item} />;
+                    return <InstagramPost data={item} key={item.images} />;
                   })}
                 </ScrollArea>
               </div>
