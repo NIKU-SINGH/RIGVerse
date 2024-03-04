@@ -7,8 +7,8 @@ import { Contact, Play, ShoppingCart } from 'lucide-react';
 
 function GameArena() {
         const router = useRouter();
-        const query = router.query;
-        const game = query.game ? JSON.parse(query.game) : null;
+        const game = router.query;
+        console.log("query is",game);
         return (
                 <div className='flex w-full overflow-hidden'>
                         <div className='fixed'>

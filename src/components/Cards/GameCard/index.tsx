@@ -30,7 +30,7 @@ const Index: React.FC<GameProps> = ({ game, endpoint }) => {
         const handleRedirect = () => {
                 router.push({
                         pathname: endpoint + "/" + game.id,
-                        query: { game: JSON.stringify(game) },
+                        query: { ...game },
                 });
         };
         return (
