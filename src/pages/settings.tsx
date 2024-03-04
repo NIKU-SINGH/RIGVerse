@@ -56,7 +56,7 @@ function UserSettings() {
         </div>
 
         {/* Profile image upload */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 text-gray-200">
           <div className="my-4 p-4 rounded-2xl bg-gray-800 w-96">
             {/* <h2 className="text-lg font-semibold">Profile Image</h2> */}
             <div className="flex gap-2 flex-col items-center justify-center">
