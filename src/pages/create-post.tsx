@@ -30,7 +30,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ConnectWallet } from "@/lib/walletConnect";
 import { insertPost } from "@/lib/supabase";
 import { useMoralis } from "react-moralis";
-import { uploadFile } from "@/lib/lighthouse";
+import { uploadFile } from "@/lib/pinata";
 
 const formSchema = z.object({
   title: z.string().min(2).max(200),
@@ -61,20 +61,21 @@ function Index() {
 
     if (account && file) {
       console.log(file);
-      await uploadFile(file);
+      const cid = await uploadFile(file);
+      console.log(cid);
       const data = {
         title: values.title,
         content: values.content,
         address: account || "",
         image:
-          "" ||
+          cid ||
           "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg",
         visibility: true,
         tags: ["1", "2"] || [],
         nft_address: "ss",
       };
       //       insertPost(data);
-      console.log(values);
+      // console.log(values);
     }
   }
   return (
