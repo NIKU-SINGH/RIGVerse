@@ -9,6 +9,7 @@ import JoinCard from "@/components/Cards/JoinCard";
 import CarouselComponent from "@/components/Carousel";
 import ProductCard from "@/components/Cards/ProductCard";
 import GameCard from "@/components/Cards/GameCard";
+import { link } from "fs";
 
 const Catalog = [
   {
@@ -16,6 +17,33 @@ const Catalog = [
     description: "The most popular games on the platform",
     enpoint: "/game",
     games: [
+      {
+        id: 1,
+        name: "Hyperland",
+        price: 20,
+        image: "/games/hyperland.jpeg",
+        category: ["FPS", "MOBA", "Shooter"],
+        viewerCount: "4.9K Active Gamers",
+        badge: "Purchased",
+      },
+      {
+        id: 2,
+        name: "Arcave",
+        price: 20,
+        image: "/games/arcave.jpeg",
+        category: ["FPS", "MOBA", "Shooter"],
+        viewerCount: "4.9K Active Gamers",
+        badge: "Purchased",
+      },
+      {
+        id: 3,
+        name: "Warfield",
+        price: 20,
+        image: "/games/warfield.jpeg",
+        category: ["FPS", "MOBA", "Shooter"],
+        viewerCount: "4.9K Active Gamers",
+        badge: "OnSale",
+      },
       {
         id: 1,
         name: "Call of Duty: Modern Warfare",
@@ -186,8 +214,45 @@ const topRatedGames = [
     enpoint: "/game",
     games: [
       {
+        id: 51,
+        name: "Hyperland",
+        link: "https://hyperland-liard.vercel.app",
+        price: 20,
+        image: "/games/hyperland.jpeg",
+        category: ["FPS", "MOBA", "Shooter"],
+        viewerCount: "4.9K Active Gamers",
+        description:
+          "Step into the world of magic with Hogwarts an open-world action RPG set in the 1800s wizarding world. Forge your destiny as a student at Hogwarts School of Witchcraft and Wizardry.",
+        badge: "Purchased",
+      },
+      {
+        id: 52,
+        name: "Arcave",
+        link: "https://eth-india-2023.vercel.app",
+        price: 20,
+        image: "/games/arcave.jpeg",
+        category: ["FPS", "MOBA", "Shooter"],
+        viewerCount: "4.9K Active Gamers",
+        description:
+          "Step into the world of magic with Hogwarts an open-world action RPG set in the 1800s wizarding world. Forge your destiny as a student at Hogwarts School of Witchcraft and Wizardry.",
+        badge: "Purchased",
+      },
+      {
+        id: 53,
+        name: "Warfield",
+        link: "https://warfield.vercel.app",
+        price: 20,
+        image: "/games/warfield.jpeg",
+        category: ["FPS", "MOBA", "Shooter"],
+        viewerCount: "4.9K Active Gamers",
+        description:
+          "Step into the world of magic with Hogwarts an open-world action RPG set in the 1800s wizarding world. Forge your destiny as a student at Hogwarts School of Witchcraft and Wizardry.",
+        badge: "OnSale",
+      },
+      {
         id: 17,
         name: "Hogwarts Legacy",
+        link: "https://hyperland-liard.vercel.app",
         price: 20,
         image: "/games/hogwarts.png",
         description:
@@ -199,6 +264,7 @@ const topRatedGames = [
       {
         id: 18,
         name: "The Witness",
+        link: "https://hyperland-liard.vercel.app",
         price: 40,
         image: "/games/codmw.jpg",
         description:
@@ -210,6 +276,7 @@ const topRatedGames = [
       {
         id: 19,
         name: "Ori and the Will of the Wisps",
+        link: "https://hyperland-liard.vercel.app",
         price: 30,
         image: "/games/cypherpunk.jpg",
         description:
@@ -221,6 +288,7 @@ const topRatedGames = [
       {
         id: 20,
         name: "Shovel Knight",
+        link: "https://hyperland-liard.vercel.app",
         price: 25,
         image: "/games/codPoster.jpg",
         description:
@@ -232,6 +300,7 @@ const topRatedGames = [
       {
         id: 21,
         name: "Cuphead",
+        link: "https://hyperland-liard.vercel.app",
         price: 20,
         image: "/games/gow.jpg",
         description:

@@ -88,7 +88,7 @@ export const insertUserData = async (userData: UserData) => {
 
 // *************Insert Message*********************
 
-interface Msg {
+export interface Msg {
   to: string;
   from: string;
   message: string;
@@ -100,7 +100,6 @@ const udata1 = {
   message: "hello world!",
 };
 export const insertMessage = async (msgData: Msg) => {
-  console.log(msgData);
   const { data, error } = await supabase
     .from("chats")
     .insert([msgData])
@@ -117,7 +116,7 @@ export const insertMessage = async (msgData: Msg) => {
 // *************Fetch to message*********************
 
 export async function fetchtoMessage(address: string) {
-  let { data: chats, error } = await supabase
+  let { data, error } = await supabase
     .from("chats")
     .select("*")
     .eq("to", address);
@@ -126,14 +125,67 @@ export async function fetchtoMessage(address: string) {
     console.log(error);
   } else {
     // Handle success
-    console.log(chats);
+    return data;
   }
 }
 
 // *************Fetch from message*********************
 
+export type Message = {
+  id: number;
+  created_at: string;
+  to: string;
+  from: string;
+  message: string;
+};
+
+export type GroupedConversation = {
+  addr: string;
+  chat: Message[];
+};
+
+export function groupConversations(
+  data: Message[],
+  knownAddress: string
+): GroupedConversation[] {
+  if (!data || !knownAddress) {
+    throw new Error("Missing required arguments: data and knownAddress");
+  }
+
+  data.sort(
+    (a, b) =>
+      new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+  );
+
+  const groupedByUser = data.reduce<Record<string, Message[]>>(
+    (acc, message) => {
+      const sortedPair = [message.to, message.from].sort();
+      const user1 = sortedPair[0];
+      const user2 = sortedPair[1];
+
+      const uncommonUser = user1 !== knownAddress ? user1 : user2;
+
+      acc[uncommonUser] = acc[uncommonUser] || [];
+      acc[uncommonUser].push(message);
+      return acc;
+    },
+    {}
+  );
+
+  const result: GroupedConversation[] = Object.entries(groupedByUser).map(
+    ([user, messages]) => {
+      return {
+        addr: user,
+        chat: messages,
+      };
+    }
+  );
+
+  return result;
+}
+
 export async function fetchfromMessage(address: string) {
-  let { data: chats, error } = await supabase
+  let { data, error } = await supabase
     .from("chats")
     .select("*")
     .eq("from", address);
@@ -141,7 +193,8 @@ export async function fetchfromMessage(address: string) {
     // Handle error
     console.log(error);
   } else {
-    console.log(chats);
+    // console.log(data);
+    return data;
     // Handle success
   }
 }

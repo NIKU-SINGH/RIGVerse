@@ -4,6 +4,7 @@ import { SideNavbar } from "@/components/Sidebar/SideNavbar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { Contact, Play, ShoppingCart } from "lucide-react";
+import Link from "next/link";
 
 function GameArena() {
   const router = useRouter();
@@ -50,9 +51,16 @@ function GameArena() {
               {/* Text content that appears on hover */}
               <div className="flex flex-col bottom-24  transition-y absolute px-4 py-2 w-full rounded-lg  duration-300 ease-in-out">
                 <div className="items-center justify-center flex gap-4 my-2">
-                  <button className="flex items-center justify-center w-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl">
-                    <Play className="mr-2" size={16} /> Play Solo
-                  </button>
+                  <Link
+                    href={
+                      (game!.link as string) ||
+                      "https://hyperland-liard.vercel.app"
+                    }
+                  >
+                    <button className="flex items-center justify-center w-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl">
+                      <Play className="mr-2" size={16} /> Play Solo
+                    </button>
+                  </Link>
                   <button className="flex items-center justify-center w-48 bg-gray-800 hover:bg-primary text-white font-bold py-4 px-6 rounded-xl">
                     <Contact className="mr-2" size={16} /> Invite Friend
                   </button>
@@ -63,7 +71,7 @@ function GameArena() {
         </div>
       </div>
 
-      <div
+      {/* <div
         className="flex flex-col bottom-0 absolute px-4 py-2 w-full rounded-lg h-64"
         style={{
           background: "rgba( 255, 255, 255, 0.25 )",
@@ -74,7 +82,6 @@ function GameArena() {
           border: "1px solid rgba( 255, 255, 255, 0.18 )",
         }}
       >
-        {/* Text content that appears on hover */}
         <div className="flex flex-col bottom-24  transition-y absolute px-4 py-2 w-full rounded-lg  duration-300 ease-in-out">
           <div className="items-center justify-center flex gap-4 my-2">
             <button className="flex items-center justify-center w-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl">
@@ -85,7 +92,7 @@ function GameArena() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

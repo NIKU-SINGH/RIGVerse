@@ -8,92 +8,64 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Header from "./components/Header";
 import UserMessageCard from "./components/MessageCards/UserMessageCard";
 import FriendMessageCard from "./components/MessageCards/FriendMessageCard";
+import { useMoralis } from "react-moralis";
 import {
+  GroupedConversation,
+  Msg,
   fetchfromMessage,
   fetchtoMessage,
+  groupConversations,
   insertMessage,
 } from "@/lib/supabase";
-import { useMoralis } from "react-moralis";
-interface responseSchema {
-  userMessage?: string;
-  replies?: string;
-  error?: string;
+
+interface ChatInterface {
+  id: number;
+  created_at: string;
+  to: string;
+  from: string;
+  message: string;
 }
 
-function ChatBox() {
+interface Temp {
+  data: GroupedConversation;
+}
+
+const ChatBox: React.FC<Temp> = (data) => {
   const { account } = useMoralis();
   const [userMessage, setUserMessage] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [replies, setReplies] = useState<responseSchema[]>([]);
-
-  const sendMessage = async () => {};
+  const [chatData, setChatData] = useState<ChatInterface[]>(data.data.chat);
 
   useEffect(() => {
-    const fetchMessage = async () => {
-      fetchtoMessage("addr1");
-      fetchfromMessage("0xc5e37e8821c7a5d80c542a826d1a1a595b40fe8e");
-    };
-    fetchMessage();
-  }, []);
-
-  const sortChatData = () => {};
+    setChatData(data.data.chat);
+  }, [data]);
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+    // event.preventDefault();
     await insertMessage({
-      to: account || "",
+      to: data.data.addr || "addr2",
       from: account || "",
       message: userMessage || "",
     });
-    // console.log("The message is", userMessage, loading);
-    // setReplies((prevState: responseSchema[]) => {
-    //   return [...prevState, { userMessage }];
-    // });
-    // setLoading(true);
-
-    // try {
-    //     const res = await axios.post("http://localhost:8000/api/v1/query", {
-    //         userMessage: userMessage,
-    //     });
-    //     const answer: string = res.data.response.text;
-    //     setReplies((prevState: responseSchema[]) => {
-    //         return prevState.map((entry) =>z
-    //             entry.userMessage === userMessage ? { ...entry, replies: [] } : entry
-    //         );
-    //     });
-    // } catch (e: unknown) {
-    //     console.log(e);
-    //     setReplies((prevState: responseSchema[]) => {
-    //         return prevState.map((entry) =>
-    //             entry.userMessage === userMessage
-    //                 ? { ...entry, error: "there was an error" }
-    //                 : entry
-    //         );
-    //     });
-    // }
+    window.location.reload();
     setUserMessage("");
     setLoading(false);
   };
-  // console.log(replies);
-  // useEffect(() => {
-  // },[currentResponse])
+
   return (
     <div className="w-full">
       {/* Chat */}
       <div className="w-full">
         <div className="rounded-b-xl h-screen flex flex-col">
           {/* Chat Header */}
-          <Header />
+          <Header addr={data.data.addr} />
           <ScrollArea className="h-[83vh] px-8">
-            {replies?.map((data, id) => (
-              <div key={id} className="mt-4">
-                {/* Original users message */}
-                <UserMessageCard message={data.userMessage} />
-
-                {/* Reply from the friend */}
-                <FriendMessageCard message={data.userMessage} />
-              </div>
-            ))}
+            {chatData?.reverse().map(({ from, message }, index) => {
+              if (account && account == from) {
+                return <UserMessageCard message={message} key={index} />;
+              }
+              return <FriendMessageCard message={message} key={index} />;
+            })}
           </ScrollArea>
           {/* Input */}
           <div className=" flex items-center justify-center py-2 ">
@@ -123,6 +95,6 @@ function ChatBox() {
       </div>
     </div>
   );
-}
+};
 
 export default ChatBox;
