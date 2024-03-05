@@ -62,7 +62,7 @@ const ChatBox: React.FC<Temp1> = (data) => {
           {/* Chat Header */}
           <Header addr={data?.data?.addr} />
           <ScrollArea className="h-[83vh] px-8">
-            {chatData?.reverse().map(({ from, message }, index) => {
+            {chatData?.map(({ from, message }, index) => {
               if (message?.startsWith("Room_id:")) {
                 return (
                   <VideoCallCard
