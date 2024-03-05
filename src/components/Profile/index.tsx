@@ -152,9 +152,9 @@ export default function Profile() {
           </div>
           {/* Post grid */}
           <div className="flex flex-wrap justify-center">
-            {postData?.map((item) => {
+            {postData?.map((item, index) => {
               console.log(item);
-              return <Post data={item} />;
+              return <Post data={item} key={index} />;
             })}
           </div>
         </div>

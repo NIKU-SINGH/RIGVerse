@@ -21,8 +21,6 @@ const tempChat = [
 
 // Simple Modal Component
 function Modal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  if (!open) return null;
-
   const { account } = useMoralis();
   const [chatIndex, setChatIndex] = useState<number>(0);
   const [selectedChat, setSelectedChat] = useState<GroupedConversation>({
@@ -52,6 +50,7 @@ function Modal({ open, onClose }: { open: boolean; onClose: () => void }) {
     setSelectedChat(chatData[chatIndex]);
   }, [chatIndex]);
 
+  if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
