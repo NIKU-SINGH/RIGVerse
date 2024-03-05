@@ -11,6 +11,17 @@ import RemotePeer from "@/lib/huddle/RemotePeer";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Mic2, PhoneMissed } from "lucide-react";
+import { ethers } from "ethers";
+import {
+  USER_CONTRACT_ABI,
+  USER_CONTRACT_ADDRESS,
+} from "@/lib/contract/constant";
+import {
+  mintPostFn,
+  registerStudioFn,
+  registerUserFn,
+  setPostNFTContractFn,
+} from "@/lib/contractFuncationCall";
 
 const Huddle = () => {
   const [roomID, setRoomID] = useState<string>("");
@@ -70,10 +81,56 @@ const Huddle = () => {
   console.log("peerids = " + peerIds);
   console.log("roomID = " + roomID);
 
+  const handleRegisterUser = async () => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum,
+      "any"
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const userName = "Usertemp";
+    await registerUserFn(signer, userName);
+  };
+
+  const handleRegisterStudio = async () => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum,
+      "any"
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    await registerStudioFn(signer);
+  };
+
+  const handleSetPostNFTContract = async () => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum,
+      "any"
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    await setPostNFTContractFn(signer);
+  };
+  const handleMintPost = async () => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum,
+      "any"
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    await mintPostFn(signer);
+  };
+
   return (
     <div className="text-white fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <div className="my-2   p-2 flex flex-col justify-start items-center gap-2  hover:text-gray-200">
         <div className="w-full h-80 rounded-xl border-2 border-gray-800"></div>
+        <Button onClick={() => handleRegisterUser()}>Register User</Button>
+        <Button onClick={() => handleRegisterStudio()}>Register Studio</Button>
+        <Button onClick={() => handleSetPostNFTContract()}>
+          Set postNFT Contract
+        </Button>
+        <Button onClick={() => handleMintPost()}>mint Post</Button>
         <div className="gap-2 w-full flex items-center text-center text-gray-400 font-semibold">
           <Button className="h-6 px-5 py-5 w-full bg-green-600 hover:bg-green-700">
             share

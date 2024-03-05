@@ -226,6 +226,9 @@ export interface Post {
   visibility: boolean;
   tags: string[];
   nft_address: string;
+  id?: number;
+  reposts?: number;
+  likes?: number;
 }
 
 export const insertPost = async (postData: Post) => {
@@ -243,6 +246,56 @@ export const insertPost = async (postData: Post) => {
   }
 };
 
+// *************Update Post*********************
+
+export const updatePost = async (id: number, repostCnt: number) => {
+  const { data, error } = await supabase
+    .from("posts")
+    .update({ reposts: repostCnt + 1 })
+    .eq("id", id)
+    .select();
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    // Handle success
+    return data[0]?.id;
+  }
+};
+
+// *************Update Post Likes*********************
+
+export const updatePostLike = async (id: number, likes: number) => {
+  const { data, error } = await supabase
+    .from("posts")
+    .update({ likes: likes + 1 })
+    .eq("id", id)
+    .select();
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    // Handle success
+    return data[0]?.id;
+  }
+};
+
+// *************Insert RePost*********************
+
+export const insertRePost = async (postData: Post) => {
+  console.log(postData);
+  const { data, error } = await supabase
+    .from("posts")
+    .insert([postData])
+    .select();
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    // Handle success
+    return data[0]?.id;
+  }
+};
 // *************Fetch All Post*********************
 
 export const fetchAllPost = async () => {

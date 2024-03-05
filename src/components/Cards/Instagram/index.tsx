@@ -9,23 +9,60 @@ import {
   Settings,
 } from "lucide-react";
 import Image from "next/image";
-import { Post as PostInterface } from "@/lib/supabase";
+import {
+  Post as PostInterface,
+  insertRePost,
+  updatePost,
+  updatePostLike,
+} from "@/lib/supabase";
+import { useMoralis } from "react-moralis";
+import Loader from "@/components/Loader";
 
 interface Temp {
   data: PostInterface;
 }
 
 const InstagramPost: React.FC<Temp> = (data) => {
-  const resData = data.data;
+  const resData = data?.data;
   console.log(resData);
+  const { account } = useMoralis();
+  const [loader, setLoader] = React.useState(false);
   // Simulated comments array
   const comments = [
     { username: "user1", text: "This is an awesome post!" },
     // { username: 'user2', text: 'Great content!' },
     // { username: 'user3', text: 'Love it!' },
   ];
+
+  const handleRepost = async () => {
+    setLoader(true);
+    if (account) {
+      const data = {
+        title: resData.title,
+        content: resData.content,
+        address: account || "",
+        images: resData.images,
+        visibility: true,
+        tags: ["1", "2"] || [],
+        nft_address: resData.nft_address,
+        repost: resData.id,
+      };
+      await insertRePost(data);
+      await updatePost(resData?.id as number, resData.reposts as number);
+    }
+    setLoader(false);
+  };
+
+  const handleLike = async () => {
+    setLoader(true);
+    if (account) {
+      await updatePostLike(resData?.id as number, resData.likes as number);
+    }
+    setLoader(false);
+  };
   return (
     <div className="p-4">
+      {loader && <Loader />}
       <div className="  border-t-[1px] border-gray-700 text-gray-200 w-full">
         <div className="flex items-center px-4 py-3">
           <div className="border-2 border-pink-600 p-1 rounded-full">
@@ -35,12 +72,12 @@ const InstagramPost: React.FC<Temp> = (data) => {
             </Avatar>
           </div>
           <div className="ml-3">
-            <span className="text-sm font-semibold antialiased block leading-tight">
+            <span className="text-lg font-semibold antialiased block leading-tight">
               {resData?.title}
             </span>
-            <span className="text-gray-400 text-xs block">
+            {/* <span className="text-gray-400 text-xs block">
               Asheville, North Carolina
-            </span>
+            </span> */}
           </div>
         </div>
         <Image
@@ -57,9 +94,16 @@ const InstagramPost: React.FC<Temp> = (data) => {
         <div className="flex items-center justify-between mx-4 mt-3 mb-2">
           <div className="flex gap-5 text-gray-200">
             {/* Repost */}
-            <Repeat className="h-6 w-6 cursor-pointer" />
+
+            <Repeat
+              onClick={() => handleRepost()}
+              className="h-6 w-6 cursor-pointer"
+            />
             {/* like */}
-            <Heart className="h-6 w-6 cursor-pointer" />
+            <Heart
+              onClick={() => handleLike()}
+              className="h-6 w-6 cursor-pointer"
+            />
 
             {/* Donate */}
             <HandCoins className="h-6 w-6 cursor-pointer" />

@@ -112,6 +112,8 @@ function Index() {
         visibility: true,
         tags: ["1", "2"] || [],
         nft_address: "ss",
+        likes: 0,
+        reposts: 0,
       };
       const id = await insertPost(data);
       setId(id || "");
