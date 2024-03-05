@@ -8,7 +8,13 @@ import PlayCard from "@/components/Cards/PlayCard";
 import Profile from "@/components/Profile/index";
 import { SideNavbar } from "@/components/Sidebar/SideNavbar";
 import { useRouter } from "next/router";
-import { Bookmark, Contact2, Grid3X3, MessageCircle } from "lucide-react";
+import {
+  Bookmark,
+  CoinsIcon,
+  Contact2,
+  Grid3X3,
+  MessageCircle,
+} from "lucide-react";
 import Image from "next/image";
 import {
   UserData,
@@ -19,6 +25,7 @@ import {
 } from "@/lib/supabase";
 import Post from "@/components/Cards/Post";
 import { useMoralis } from "react-moralis";
+import DonateAmountModal from "@/components/Modals/Donate";
 // Add missing import for the Profile component
 
 function Index() {
@@ -26,6 +33,7 @@ function Index() {
   const { account } = useMoralis();
   const game = router.query;
   const address: string = game.userId as string;
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [userData, setuserData] = useState<UserData>();
   const [postData, setpostData] = useState<PostInterface[]>();
 
@@ -36,6 +44,7 @@ function Index() {
         // console.log(data1);
         setpostData(data1);
         const data2 = await fetchUserData(address);
+        console.log(data2);
         setuserData(data2);
       }
     };
@@ -53,9 +62,18 @@ function Index() {
       router.push("/chat");
     }
   };
+  const handleModalToggle = async () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <div>
+      {isModalOpen && (
+        <DonateAmountModal
+          onClose={handleModalToggle}
+          address={userData?.address}
+        />
+      )}
       <div className="flex">
         <div className="fixed">
           <SideNavbar />
@@ -96,6 +114,12 @@ function Index() {
                       className="bg-blue-500 px-2 hover:bg-blue-700 mr-2 py-1 text-white font-semibold text-sm rounded flex text-center gap-1 "
                     >
                       <MessageCircle />
+                    </button>
+                    <button
+                      onClick={() => handleModalToggle()}
+                      className="bg-blue-500 px-2 hover:bg-blue-700 mr-2 py-1 text-white font-semibold text-sm rounded flex text-center gap-1 "
+                    >
+                      Donate
                     </button>
                     {/* follow button */}
                     <a

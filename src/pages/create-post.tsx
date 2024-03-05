@@ -30,13 +30,15 @@ import { useForm } from "react-hook-form";
 import { number, object, z } from "zod";
 import { Textarea } from "@/components/ui/textarea";
 import { ConnectWallet } from "@/lib/walletConnect";
-import { insertAds, insertPost } from "@/lib/supabase";
+import { Post, insertAds, insertPost } from "@/lib/supabase";
 import { useMoralis } from "react-moralis";
 import { uploadFile } from "@/lib/pinata";
 import Loader from "@/components/Loader";
 import Link from "next/link";
 import { time } from "console";
 import { useRouter } from "next/router";
+import { ethers } from "ethers";
+import { mintPostFn } from "@/lib/contractFuncationCall";
 
 const formSchema = z.object({
   title: z.string().min(2).max(200),
@@ -95,6 +97,16 @@ function Index() {
     setLoader(false);
   }
 
+  const handleMintPost = async (data: Post) => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum,
+      "any"
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    await mintPostFn(signer, data);
+  };
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -116,6 +128,8 @@ function Index() {
         reposts: 0,
       };
       const id = await insertPost(data);
+
+      await handleMintPost(data);
       setId(id || "");
       // console.log(values);
     }

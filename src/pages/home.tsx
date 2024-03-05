@@ -61,7 +61,7 @@ function Index() {
             <div className="w-full mt-10">
               <div className="py-2 px-3 flex justify-center">
                 <ScrollArea className="w-3/4 px-1">
-                  {postData?.map((item) => {
+                  {postData?.reverse().map((item) => {
                     return <InstagramPost data={item} key={item.images} />;
                   })}
                 </ScrollArea>

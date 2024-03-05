@@ -17,9 +17,11 @@ import {
   USER_CONTRACT_ADDRESS,
 } from "@/lib/contract/constant";
 import {
+  getPostsByCreatorFn,
   mintPostFn,
-  registerStudioFn,
+  registerOnlyStudioFn,
   registerUserFn,
+  registerWithStudioFn,
   setPostNFTContractFn,
 } from "@/lib/contractFuncationCall";
 
@@ -92,14 +94,25 @@ const Huddle = () => {
     await registerUserFn(signer, userName);
   };
 
-  const handleRegisterStudio = async () => {
+  const handleRegisterOnlyStudio = async () => {
     const provider = new ethers.providers.Web3Provider(
       (window as any).ethereum,
       "any"
     );
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    await registerStudioFn(signer);
+    await registerOnlyStudioFn(signer);
+  };
+
+  const handleRegisterWithStudioFn = async () => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum,
+      "any"
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const userName = "Usertemp222";
+    await registerWithStudioFn(signer, userName);
   };
 
   const handleSetPostNFTContract = async () => {
@@ -118,7 +131,8 @@ const Huddle = () => {
     );
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    await mintPostFn(signer);
+    // await mintPostFn(signer);
+    await getPostsByCreatorFn(signer);
   };
 
   return (
@@ -126,7 +140,12 @@ const Huddle = () => {
       <div className="my-2   p-2 flex flex-col justify-start items-center gap-2  hover:text-gray-200">
         <div className="w-full h-80 rounded-xl border-2 border-gray-800"></div>
         <Button onClick={() => handleRegisterUser()}>Register User</Button>
-        <Button onClick={() => handleRegisterStudio()}>Register Studio</Button>
+        <Button onClick={() => handleRegisterOnlyStudio()}>
+          Register Only Studio
+        </Button>
+        <Button onClick={() => handleRegisterWithStudioFn()}>
+          Register With Studio
+        </Button>
         <Button onClick={() => handleSetPostNFTContract()}>
           Set postNFT Contract
         </Button>

@@ -1,21 +1,373 @@
 export const USER_CONTRACT_ADDRESS =
-  "0xf4dc4c0a23dd0d67600c49f0d6743918bcef462f";
+  "0xa53aD4c4c4ed6149FA57591256bd033b2A225a5f";
 
 export const POST_CONTRACT_ADDRESS =
-  "0xe4347433f973db53736bedeb21b9e2f52b414f7d";
+  "0x50b8bb1460C86d36EE28243fB866257736406074";
 
 export const USER_CONTRACT_ABI = [
+  {
+    inputs: [],
+    name: "CannotDonateToYourself",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "InvalidDonationAmount",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "OnlyStudiosAllowed",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "UserAlreadyRegistered",
+    type: "error",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "chat",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "donor",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "DonationToChat",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "gamer",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "donor",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "DonationToGamer",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "uint256",
+        name: "postId",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "donor",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "DonationToPost",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "chatDonations",
+    outputs: [
+      {
+        internalType: "address",
+        name: "donor",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
   {
     inputs: [
       {
         internalType: "string",
-        name: "content",
+        name: "title",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "message",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "img",
         type: "string",
       },
     ],
     name: "createPostWithAdvertisement",
     outputs: [],
     stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "gamer",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "donateGamer",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "chat",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "donateInChat",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "postId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "donatePost",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "gamerDonations",
+    outputs: [
+      {
+        internalType: "address",
+        name: "donor",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "chat",
+        type: "address",
+      },
+    ],
+    name: "getChatDonations",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "donor",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct GameSocialFi.Donation[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "gamer",
+        type: "address",
+      },
+    ],
+    name: "getGamerDonations",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "donor",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct GameSocialFi.Donation[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "postId",
+        type: "uint256",
+      },
+    ],
+    name: "getPostDonations",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "donor",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct GameSocialFi.Donation[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "postDonations",
+    outputs: [
+      {
+        internalType: "address",
+        name: "donor",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "postNFT",
+    outputs: [
+      {
+        internalType: "contract PostNFT",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -33,7 +385,20 @@ export const USER_CONTRACT_ABI = [
   },
   {
     inputs: [],
-    name: "registerStudio",
+    name: "registerOnlyStudio",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "username",
+        type: "string",
+      },
+    ],
+    name: "registerWithStudio",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -49,32 +414,6 @@ export const USER_CONTRACT_ABI = [
     name: "setPostNFTContract",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "donatePost",
-    outputs: [],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "postNFT",
-    outputs: [
-      {
-        internalType: "contract PostNFT",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -121,6 +460,27 @@ export const POST_CONTRACT_ABI = [
   {
     inputs: [
       {
+        internalType: "string",
+        name: "name",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "symbol",
+        type: "string",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    inputs: [],
+    name: "AdvertisementPostCannotBeTransferred",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
         internalType: "address",
         name: "to",
         type: "address",
@@ -135,22 +495,6 @@ export const POST_CONTRACT_ABI = [
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "name",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "symbol",
-        type: "string",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
     inputs: [
@@ -256,6 +600,11 @@ export const POST_CONTRACT_ABI = [
     type: "error",
   },
   {
+    inputs: [],
+    name: "TokenDoesNotExist",
+    type: "error",
+  },
+  {
     anonymous: false,
     inputs: [
       {
@@ -308,13 +657,18 @@ export const POST_CONTRACT_ABI = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "creator",
-        type: "address",
+        internalType: "string",
+        name: "title",
+        type: "string",
       },
       {
         internalType: "string",
-        name: "content",
+        name: "message",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "img",
         type: "string",
       },
       {
@@ -332,16 +686,10 @@ export const POST_CONTRACT_ABI = [
     anonymous: false,
     inputs: [
       {
-        indexed: false,
+        indexed: true,
         internalType: "address",
         name: "creator",
         type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "username",
-        type: "string",
       },
       {
         indexed: false,
@@ -527,13 +875,18 @@ export const POST_CONTRACT_ABI = [
       {
         components: [
           {
-            internalType: "address",
-            name: "creator",
-            type: "address",
+            internalType: "string",
+            name: "title",
+            type: "string",
           },
           {
             internalType: "string",
-            name: "content",
+            name: "message",
+            type: "string",
+          },
+          {
+            internalType: "string",
+            name: "img",
             type: "string",
           },
           {
@@ -545,6 +898,25 @@ export const POST_CONTRACT_ABI = [
         internalType: "struct PostNFT.Post",
         name: "",
         type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "creator",
+        type: "address",
+      },
+    ],
+    name: "getPostsByCreator",
+    outputs: [
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
       },
     ],
     stateMutability: "view",
@@ -617,13 +989,18 @@ export const POST_CONTRACT_ABI = [
     name: "posts",
     outputs: [
       {
-        internalType: "address",
-        name: "creator",
-        type: "address",
+        internalType: "string",
+        name: "title",
+        type: "string",
       },
       {
         internalType: "string",
-        name: "content",
+        name: "message",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "img",
         type: "string",
       },
       {

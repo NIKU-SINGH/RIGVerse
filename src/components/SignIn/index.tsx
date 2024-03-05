@@ -46,6 +46,8 @@ import Link from "next/link";
 import { useMoralis } from "react-moralis";
 import { ConnectWallet } from "@/lib/walletConnect";
 import Studio from "@/pages/studio";
+import { ethers } from "ethers";
+import { registerUserFn } from "@/lib/contractFuncationCall";
 
 const formSchema = z.object({
   password: z.string().min(2).max(50),
@@ -106,6 +108,16 @@ export function UserSignIn() {
     checkNewUser();
   }, [account]);
 
+  const handleUserRegister = async (userName: string) => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum,
+      "any"
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    await registerUserFn(signer, userName);
+  };
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -136,7 +148,7 @@ export function UserSignIn() {
         following: 0,
       };
       await insertUserData(userData);
-
+      await handleUserRegister(values.username);
       console.log(values);
     }
     if (selected) {

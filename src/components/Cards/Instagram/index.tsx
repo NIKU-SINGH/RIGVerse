@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Bookmark,
@@ -17,6 +17,9 @@ import {
 } from "@/lib/supabase";
 import { useMoralis } from "react-moralis";
 import Loader from "@/components/Loader";
+import { Button } from "@/components/ui/button";
+import { IconTransfer } from "@tabler/icons-react";
+import DonateAmountModal from "@/components/Modals/Donate";
 
 interface Temp {
   data: PostInterface;
@@ -26,13 +29,18 @@ const InstagramPost: React.FC<Temp> = (data) => {
   const resData = data?.data;
   console.log(resData);
   const { account } = useMoralis();
-  const [loader, setLoader] = React.useState(false);
+  const [loader, setLoader] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // Simulated comments array
   const comments = [
     { username: "user1", text: "This is an awesome post!" },
     // { username: 'user2', text: 'Great content!' },
     // { username: 'user3', text: 'Love it!' },
   ];
+
+  const handleModalToggle = async () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   const handleRepost = async () => {
     setLoader(true);
@@ -63,6 +71,7 @@ const InstagramPost: React.FC<Temp> = (data) => {
   return (
     <div className="p-4">
       {loader && <Loader />}
+      {isModalOpen && <DonateAmountModal onClose={handleModalToggle} />}
       <div className="  border-t-[1px] border-gray-700 text-gray-200 w-full">
         <div className="flex items-center px-4 py-3">
           <div className="border-2 border-pink-600 p-1 rounded-full">
@@ -71,13 +80,19 @@ const InstagramPost: React.FC<Temp> = (data) => {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </div>
-          <div className="ml-3">
+          <div className="ml-3 w-full flex justify-between items-center">
             <span className="text-lg font-semibold antialiased block leading-tight">
               {resData?.title}
             </span>
-            {/* <span className="text-gray-400 text-xs block">
-              Asheville, North Carolina
-            </span> */}
+            <span>
+              <Button variant={"secondary"} className="mr-2">
+                Transfer Post
+                <IconTransfer />
+              </Button>
+              <Button onClick={handleModalToggle}>
+                Donate <HandCoins />
+              </Button>
+            </span>
           </div>
         </div>
         <Image
@@ -114,7 +129,9 @@ const InstagramPost: React.FC<Temp> = (data) => {
             <Bookmark className="h-6 w-6" />
           </div>
         </div>
-        <div className="font-semibold text-sm mx-4 mt-2 mb-4">92,372 likes</div>
+        <div className="font-semibold text-sm mx-4 mt-2 mb-4">
+          {resData.likes ? resData.likes : 0} likes
+        </div>
         {/* Comment section */}
         <div className="p-4">
           <div className=" border-t-[1px] border-gray-700 text-gray-200 w-full">
