@@ -34,11 +34,11 @@ const ChatBox: React.FC<Temp1> = (data) => {
   const { account } = useMoralis();
   const [userMessage, setUserMessage] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [chatData, setChatData] = useState<ChatInterface[]>(data.data.chat);
+  const [chatData, setChatData] = useState<ChatInterface[]>(data?.data?.chat);
 
   useEffect(() => {
-    setChatData(data.data.chat);
-  }, [data]);
+    setChatData(data?.data?.chat);
+  }, [data.data]);
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     // event.preventDefault();
@@ -58,7 +58,7 @@ const ChatBox: React.FC<Temp1> = (data) => {
       <div className="w-full">
         <div className="rounded-b-xl h-screen flex flex-col">
           {/* Chat Header */}
-          <Header addr={data.data.addr} />
+          <Header addr={data?.data?.addr} />
           <ScrollArea className="h-[83vh] px-8">
             {chatData?.reverse().map(({ from, message }, index) => {
               if (account && account == from) {

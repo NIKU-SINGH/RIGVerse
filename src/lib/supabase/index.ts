@@ -100,6 +100,7 @@ const udata1 = {
   message: "hello world!",
 };
 export const insertMessage = async (msgData: Msg) => {
+  console.log(msgData);
   const { data, error } = await supabase
     .from("chats")
     .insert([msgData])
@@ -199,6 +200,22 @@ export async function fetchfromMessage(address: string) {
   }
 }
 
+// *************Search Address*********************
+
+export const searchAddress = async (addr: string) => {
+  let { data, error } = await supabase
+    .from("users")
+    .select("*")
+    .eq("address", addr);
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    console.log(data);
+    return data;
+    // Handle success
+  }
+};
 // *************Insert Post*********************
 
 export interface Post {

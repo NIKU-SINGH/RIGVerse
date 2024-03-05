@@ -137,7 +137,7 @@ export function UserSignUp() {
                       <Input
                         className="bg-transparent border-gray-700 w-full"
                         id="name"
-                        placeholder="Enter your name"
+                        placeholder="Enter your password"
                         {...field}
                         type="password"
                       />

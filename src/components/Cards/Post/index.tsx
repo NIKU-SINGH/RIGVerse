@@ -8,7 +8,7 @@ interface Temp {
 
 const Post: React.FC<Temp> = (data) => {
   const resData = data.data;
-  console.log(resData);
+  // console.log(resData);
   return (
     <div className="w-64 p-1">
       <a href="#">

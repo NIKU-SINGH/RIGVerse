@@ -22,6 +22,8 @@ import {
   Home,
   SquarePen,
   MessageCircleCode,
+  Search,
+  SearchIcon,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import JoinCard from "@/components/Cards/JoinCard";
@@ -54,11 +56,11 @@ const buttonLinks = [
     href: "/studio", // Update with the correct path
     icon: <Clapperboard className="h-6 w-6" />,
   },
-  // {
-  //     title: "Purchase",
-  //     href: "/purchase", // Update with the correct path
-  //     icon: <ShoppingCart className="h-6 w-6" />,
-  // },
+  {
+    title: "Search",
+    href: "/search", // Update with the correct path
+    icon: <SearchIcon className="h-6 w-6" />,
+  },
   {
     title: "Recent Matches",
     href: "/recent-matches", // Update with the correct path
@@ -70,11 +72,11 @@ const buttonLinks = [
     icon: <MessageCircleMore className="h-6 w-6" />,
   },
 
-  {
-    title: "Comments",
-    href: `/user/comments`,
-    icon: <MessageCircleCode className="h-6 w-6" />,
-  },
+  // {
+  //   title: "Comments",
+  //   href: `/user/comments`,
+  //   icon: <MessageCircleCode className="h-6 w-6" />,
+  // },
   {
     title: "Create Post",
     href: `/create-post`, // Update with the correct path
@@ -137,38 +139,6 @@ export function SideNavbar() {
                 <ConnectWallet />
               </div>
             </div>
-
-            {/* <div className="py-2 px-3">
-                                                                        <h2 className="relative text-lg font-semibold tracking-tight text-gray-200 text-left">
-                                                                                Last Game
-                                                                        </h2>
-                                                                        <ScrollArea className="h-[250px] px-1">
-                                                                                <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                                                                <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                                                                <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                                                                <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                                                                <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                                                                <MatchCard name="Aman" points="100" imageUrl="some url" />
-                                                                        </ScrollArea>
-                                                                </div> */}
-            {/* <div className="py-2 px-3">
-                                                                        <h2 className="relative text-lg font-semibold tracking-tight text-gray-200 text-left">
-                                                                                Recent Play history
-                                                                        </h2>
-                                                                        <ScrollArea className="h-[250px] px-1">
-                                                                                <PlayCard name="Valorant" imageUrl="/games/valorant1.jpg" />
-                                                                                <PlayCard name="Call of Duty" imageUrl="/games/codPoster.jpg" />
-                                                                                <PlayCard name="Call of Duty" imageUrl="/games/codmw.jpg" />
-                                                                                <PlayCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
-                                                                                <PlayCard name="Assasins Creed" imageUrl="/games/creed4.jpg" />
-                                                                                <PlayCard name="FIFA 23" imageUrl="/games/fifa23.jpeg" />
-                                                                                <PlayCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
-                                                                                <PlayCard name="FIFA 19" imageUrl="/games/fifa19.jpg" />
-                                                                        </ScrollArea>
-                                                                </div> */}
-            {/* <div className="py-2 px-3">
-                                                                        <JoinCard />
-                                                                </div> */}
           </div>
         </div>
       ) : (
@@ -181,12 +151,6 @@ export function SideNavbar() {
             </div>
 
             <div className="px-3 py-2">
-              {/* <div>
-                                                                                <Expand
-                                                                                        onClick={() => setToggle(!toggle)}
-                                                                                        className="h-6 w-6 text-gray-200 "
-                                                                                />
-                                                                        </div> */}
               <div className=" my-2 text-gray-500 flex flex-col">
                 <Button
                   onClick={() => setToggle(!toggle)}
