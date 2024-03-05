@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useRoom } from "@huddle01/react/hooks";
 import { createToken } from "@/lib/huddle/Token";
 import VideoCallModal from "@/components/Modals/Chat";
+import Loader from "@/components/Loader";
 interface IndexProps {
   message?: string;
   from?: string;
@@ -11,6 +12,7 @@ interface IndexProps {
 const Index: React.FC<IndexProps> = ({ message, from, to }) => {
   //   console.log(message, from, to);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loader, setLoader] = useState<boolean>(false);
 
   const id: string = message?.replace("Room_id:", "") || "";
 
@@ -27,12 +29,15 @@ const Index: React.FC<IndexProps> = ({ message, from, to }) => {
     },
   });
   const handleJoinRoom = async () => {
+    setLoader(true);
     await joinRoom({ roomId: id, token: await createToken(id) });
     handleModalToggle();
+    setLoader(false);
   };
 
   return (
     <div>
+      {loader && <Loader />}
       <div className="mt-2 flex space-x-2 ">
         {isModalOpen && <VideoCallModal onClose={handleModalToggle} />}
         {/* User Avatar */}
