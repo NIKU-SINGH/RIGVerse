@@ -5,6 +5,9 @@ import VideoCallModal from "@/components/Modals/Chat";
 import { createRoom } from "@/lib/huddle";
 import { insertMessage } from "@/lib/supabase";
 import { useMoralis } from "react-moralis";
+import Loader from "@/components/Loader";
+import { useRoom } from "@huddle01/react/hooks";
+import { createToken } from "@/lib/huddle/Token";
 
 interface Temp {
   addr: string;
@@ -12,9 +15,25 @@ interface Temp {
 
 const Index: React.FC<Temp> = (addr) => {
   const { account } = useMoralis();
+
+  const [loader, setLoader] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { joinRoom, leaveRoom } = useRoom({
+    onJoin: () => {
+      console.log("Joined the room");
+    },
+    onLeave: () => {
+      console.log("Left the room");
+    },
+  });
+
   const handleModalToggle = async () => {
-    // setIsModalOpen(!isModalOpen);
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const handleCreateRoom = async () => {
+    setLoader(true);
     const id: string = await createRoom();
     if (account) {
       await insertMessage({
@@ -22,10 +41,14 @@ const Index: React.FC<Temp> = (addr) => {
         from: account || "",
         message: `Room_id:${id}`,
       });
+      setLoader(false);
+      await joinRoom({ roomId: id, token: await createToken(id) });
+      handleModalToggle();
     }
   };
   return (
     <div>
+      {loader && <Loader />}
       <div className="w-full border-2 border-gray-800 bg-blue-500 text-gray-200 rounded-xl h-10 md:h-16 p-4 flex items-center mb-4 justify-between">
         {/* Profile photo and status */}
         <div className="flex items-center gap-x-2">
@@ -46,7 +69,7 @@ const Index: React.FC<Temp> = (addr) => {
           {/* <div className="mx-4 flex items-center gap-1 cursor-pointer" ><Phone /> Call</div> */}
           <div
             className="m-4 flex items-center gap-1 cursor-pointer"
-            onClick={handleModalToggle}
+            onClick={handleCreateRoom}
           >
             <Video /> Video call
           </div>

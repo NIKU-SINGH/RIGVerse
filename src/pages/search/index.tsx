@@ -79,7 +79,7 @@ const Index: React.FC = () => {
           <div className="text-white w-[400px]">
             {result.map((item) => {
               return (
-                <Link href={`/search/${item?.address}`}>
+                <Link href={`/search/${item?.address}`} key={item?.address}>
                   <div className="p-1 hover:border cursor-pointer">
                     {item?.address}
                   </div>

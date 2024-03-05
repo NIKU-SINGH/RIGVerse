@@ -6,6 +6,7 @@ import axios from "axios";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
 import Header from "./components/Header";
+import VideoCallCard from "./components/MessageCards/VideoCallCard";
 import UserMessageCard from "./components/MessageCards/UserMessageCard";
 import FriendMessageCard from "./components/MessageCards/FriendMessageCard";
 import { useMoralis } from "react-moralis";
@@ -43,7 +44,7 @@ const ChatBox: React.FC<Temp1> = (data) => {
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     // event.preventDefault();
     await insertMessage({
-      to: data.data.addr || "addr2",
+      to: data?.data?.addr || "addr2",
       from: account || "",
       message: userMessage || "",
     });
@@ -52,6 +53,7 @@ const ChatBox: React.FC<Temp1> = (data) => {
     setLoading(false);
   };
 
+  console.log(chatData);
   return (
     <div className="w-full">
       {/* Chat */}
@@ -61,6 +63,16 @@ const ChatBox: React.FC<Temp1> = (data) => {
           <Header addr={data?.data?.addr} />
           <ScrollArea className="h-[83vh] px-8">
             {chatData?.reverse().map(({ from, message }, index) => {
+              if (message.startsWith("Room_id:")) {
+                return (
+                  <VideoCallCard
+                    message={message}
+                    from={from}
+                    to={data?.data?.addr}
+                    key={index}
+                  />
+                );
+              }
               if (account && account == from) {
                 return <UserMessageCard message={message} key={index} />;
               }

@@ -2,10 +2,12 @@ import { AccessToken, Role } from "@huddle01/server-sdk/auth";
 
 export const dynamic: string = "force-dynamic";
 
+const apiKey = process.env.NEXT_PUBLIC_API_KEY || "";
+
 // Assuming `roomId` is a string. Adjust the type if necessary.
 export async function createToken(roomId: string): Promise<string> {
   const accessToken = new AccessToken({
-    apiKey: process.env.NEXT_PUBLIC_API_KEY || "",
+    apiKey: apiKey,
     roomId: roomId,
     role: Role.HOST,
     permissions: {
