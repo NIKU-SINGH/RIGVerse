@@ -2,15 +2,27 @@ import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Phone, Video } from "lucide-react";
 import VideoCallModal from "@/components/Modals/Chat";
+import { createRoom } from "@/lib/huddle";
+import { insertMessage } from "@/lib/supabase";
+import { useMoralis } from "react-moralis";
 
 interface Temp {
   addr: string;
 }
 
 const Index: React.FC<Temp> = (addr) => {
+  const { account } = useMoralis();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleModalToggle = () => {
-    setIsModalOpen(!isModalOpen);
+  const handleModalToggle = async () => {
+    // setIsModalOpen(!isModalOpen);
+    const id: string = await createRoom();
+    if (account) {
+      await insertMessage({
+        to: addr?.addr || "addr2",
+        from: account || "",
+        message: `Room_id:${id}`,
+      });
+    }
   };
   return (
     <div>

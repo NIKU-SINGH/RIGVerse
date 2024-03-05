@@ -26,11 +26,11 @@ interface ChatInterface {
   message: string;
 }
 
-interface Temp {
+interface Temp1 {
   data: GroupedConversation;
 }
 
-const ChatBox: React.FC<Temp> = (data) => {
+const ChatBox: React.FC<Temp1> = (data) => {
   const { account } = useMoralis();
   const [userMessage, setUserMessage] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
