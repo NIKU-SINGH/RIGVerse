@@ -15,6 +15,36 @@ import Image from "next/image";
 import InstagramPost from "@/components/Cards/Instagram";
 import { Post, fetchAllPost } from "@/lib/supabase";
 
+const tempData = [
+  {
+    id: 1,
+    name: "Hyperland",
+    price: 20,
+    image: "/games/hyperland.jpeg",
+    category: ["FPS", "MOBA", "Shooter"],
+    viewerCount: "4.9K Active Gamers",
+    badge: "Purchased",
+  },
+  {
+    id: 2,
+    name: "Arcave",
+    price: 20,
+    image: "/games/arcave.jpeg",
+    category: ["FPS", "MOBA", "Shooter"],
+    viewerCount: "4.9K Active Gamers",
+    badge: "Purchased",
+  },
+  {
+    id: 3,
+    name: "Warfield",
+    price: 20,
+    image: "/games/warfield.jpeg",
+    category: ["FPS", "MOBA", "Shooter"],
+    viewerCount: "4.9K Active Gamers",
+    badge: "OnSale",
+  },
+];
+
 function Index() {
   const [postData, setPostData] = useState<Post[]>();
 
@@ -41,10 +71,10 @@ function Index() {
               {/* profile image */}
               <Carousel className="w-full ">
                 <CarouselContent>
-                  {Array.from({ length: 20 }).map((_, index) => (
+                  {tempData.map(({ image }, index) => (
                     <CarouselItem key={index} className="md:basis-1/12">
                       <Image
-                        src="/games/cypherpunk.jpg"
+                        src={image}
                         alt="profile"
                         width={1000}
                         height={1000}

@@ -85,7 +85,7 @@ function Index() {
                 <div className="md:w-3/12 md:ml-16">
                   {/* profile image */}
                   <Image
-                    src="/games/cypherpunk.jpg"
+                    src="/games/profile.jpg"
                     alt="profile"
                     width={1000}
                     height={1000}
