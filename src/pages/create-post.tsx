@@ -89,8 +89,8 @@ function Index() {
     const adData = {
       id,
       amount: Number(values.amount),
-      time: Number(time.toString()),
-      score: Number(values.amount) / Number(time.toString()),
+      time: Number(time?.toString()),
+      score: Number(values.amount) / Number(time?.toString()),
     };
     await insertAds(adData);
     router.push("/explore");
@@ -139,7 +139,7 @@ function Index() {
       await insertPost(data);
 
       await handleMintPost(data);
-      setId(postId.toString() || "dd");
+      setId(postId?.toString() || "dd");
       // console.log(values);
     }
     setLoader(false);
