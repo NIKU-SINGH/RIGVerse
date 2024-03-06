@@ -3,7 +3,13 @@ import UserSidebar from "@/components/Sidebar/UserSidebar";
 import React, { useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import PlayCard from "@/components/Cards/PlayCard";
-
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 // Add missing import for the Profile component
 import Profile from "@/components/Profile/index";
 import { SideNavbar } from "@/components/Sidebar/SideNavbar";
@@ -26,7 +32,41 @@ import {
 import Post from "@/components/Cards/Post";
 import { useMoralis } from "react-moralis";
 import DonateAmountModal from "@/components/Modals/DonateGamer";
+import Link from "next/link";
 // Add missing import for the Profile component
+
+const tempData = [
+  {
+    id: 1,
+    name: "Hyperland",
+    price: 20,
+    link: "https://hyperland-liard.vercel.app",
+    image: "/games/hyperland.jpeg",
+    category: ["FPS", "MOBA", "Shooter"],
+    viewerCount: "4.9K Active Gamers",
+    badge: "Purchased",
+  },
+  {
+    id: 2,
+    name: "Arcave",
+    price: 20,
+    link: "https://eth-india-2023.vercel.app",
+    image: "/games/arcave.jpeg",
+    category: ["FPS", "MOBA", "Shooter"],
+    viewerCount: "4.9K Active Gamers",
+    badge: "Purchased",
+  },
+  {
+    id: 3,
+    name: "Warfield",
+    price: 20,
+    link: "https://warfield.vercel.app/",
+    image: "/games/warfield.jpeg",
+    category: ["FPS", "MOBA", "Shooter"],
+    viewerCount: "4.9K Active Gamers",
+    badge: "OnSale",
+  },
+];
 
 function Index() {
   const router = useRouter();
@@ -155,7 +195,28 @@ function Index() {
                   {/* <div className="">{userData?.bio}</div> */}
                 </div>
               </div>
-            </header>
+            </header>{" "}
+            {userData?.studio && (
+              <Carousel className="w-full mb-4">
+                <CarouselContent>
+                  {tempData.map(({ image, link }, index) => (
+                    <Link href={link}>
+                      <CarouselItem key={index} className="md:basis-1/12">
+                        <Image
+                          src={image}
+                          alt="profile"
+                          width={1000}
+                          height={1000}
+                          className="cursor-pointer h-16 w-16 object-cover border-2 border-pink-600 p-1 rounded-full"
+                        />
+                      </CarouselItem>
+                    </Link>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            )}
             {/* posts */}
             <div className="px-px md:px-3 ">
               {/* user following for mobile only */}

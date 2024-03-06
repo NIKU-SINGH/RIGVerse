@@ -70,6 +70,7 @@ export default function Profile() {
     fetchData();
   }, [account]);
 
+  console.log(userData?.studio);
   return (
     <>
       <main className="">
