@@ -24,6 +24,7 @@ import {
   registerWithStudioFn,
   setPostNFTContractFn,
 } from "@/lib/contractFuncationCall";
+import { fetchChaterealtime } from "@/lib/supabase";
 
 const Huddle = () => {
   const [roomID, setRoomID] = useState<string>("");
@@ -125,14 +126,7 @@ const Huddle = () => {
     await setPostNFTContractFn(signer);
   };
   const handleMintPost = async () => {
-    const provider = new ethers.providers.Web3Provider(
-      (window as any).ethereum,
-      "any"
-    );
-    await provider.send("eth_requestAccounts", []);
-    const signer = provider.getSigner();
-    // await mintPostFn(signer);
-    await getPostsByCreatorFn(signer);
+    fetchChaterealtime();
   };
 
   return (

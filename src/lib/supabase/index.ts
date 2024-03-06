@@ -130,6 +130,20 @@ export async function fetchtoMessage(address: string) {
   }
 }
 
+// *************Fetch chat realtime *********************
+export async function fetchChaterealtime() {
+  const chats = supabase
+    .channel("custom-insert-channel")
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: "chats" },
+      (payload) => {
+        console.log("Change received!", payload);
+      }
+    )
+    .subscribe();
+  console.log(chats);
+}
 // *************Fetch from message*********************
 
 export type Message = {
@@ -206,7 +220,7 @@ export const searchAddress = async (addr: string) => {
   let { data, error } = await supabase
     .from("users")
     .select("*")
-    .eq("address", addr);
+    .ilike("address", `%${addr}%`);
   if (error) {
     // Handle error
     console.log(error);

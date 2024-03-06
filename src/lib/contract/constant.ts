@@ -1,5 +1,5 @@
 export const USER_CONTRACT_ADDRESS =
-  "0xa53aD4c4c4ed6149FA57591256bd033b2A225a5f";
+  "0x65A52a6E1608FBC77D0601bc80A0a56AF53e3EB4";
 
 export const POST_CONTRACT_ADDRESS =
   "0x50b8bb1460C86d36EE28243fB866257736406074";
@@ -9,6 +9,83 @@ export const USER_CONTRACT_ABI = [
     inputs: [],
     name: "CannotDonateToYourself",
     type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "title",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "message",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "img",
+        type: "string",
+      },
+    ],
+    name: "createPostWithAdvertisement",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "gamer",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "donateGamer",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "chat",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "donateInChat",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "postId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "donatePost",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
   },
   {
     inputs: [],
@@ -103,6 +180,52 @@ export const USER_CONTRACT_ABI = [
   {
     inputs: [
       {
+        internalType: "string",
+        name: "username",
+        type: "string",
+      },
+    ],
+    name: "register",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "registerOnlyStudio",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "username",
+        type: "string",
+      },
+    ],
+    name: "registerWithStudio",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "nftContractAddress",
+        type: "address",
+      },
+    ],
+    name: "setPostNFTContract",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "address",
         name: "",
         type: "address",
@@ -127,83 +250,6 @@ export const USER_CONTRACT_ABI = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "title",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "message",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "img",
-        type: "string",
-      },
-    ],
-    name: "createPostWithAdvertisement",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "gamer",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "donateGamer",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "chat",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "donateInChat",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "postId",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "donatePost",
-    outputs: [],
-    stateMutability: "payable",
     type: "function",
   },
   {
@@ -368,52 +414,6 @@ export const USER_CONTRACT_ABI = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "username",
-        type: "string",
-      },
-    ],
-    name: "register",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "registerOnlyStudio",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "username",
-        type: "string",
-      },
-    ],
-    name: "registerWithStudio",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "nftContractAddress",
-        type: "address",
-      },
-    ],
-    name: "setPostNFTContract",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {

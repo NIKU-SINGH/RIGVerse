@@ -19,7 +19,14 @@ import { useMoralis } from "react-moralis";
 import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
 import { IconTransfer } from "@tabler/icons-react";
-import DonateAmountModal from "@/components/Modals/Donate";
+import DonateAmountModal from "@/components/Modals/DonatePost";
+import { ethers } from "ethers";
+import {
+  donateGamerFn,
+  donatePostFn,
+  getPostsByCreatorFn,
+  transferFromFn,
+} from "@/lib/contractFuncationCall";
 
 interface Temp {
   data: PostInterface;
@@ -68,10 +75,26 @@ const InstagramPost: React.FC<Temp> = (data) => {
     }
     setLoader(false);
   };
+
+  const handleTransferFrom = async () => {
+    setLoader(true);
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum,
+      "any"
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const id = await getPostsByCreatorFn(signer);
+    await transferFromFn(signer, resData?.address, id);
+    setLoader(false);
+  };
+
   return (
     <div className="p-4">
       {loader && <Loader />}
-      {/* {isModalOpen && <DonateAmountModal onClose={handleModalToggle} />} */}
+      {isModalOpen && (
+        <DonateAmountModal onClose={handleModalToggle} id={resData?.id || 1} />
+      )}
       <div className="  border-t-[1px] border-gray-700 text-gray-200 w-full">
         <div className="flex items-center px-4 py-3">
           <div className="border-2 border-pink-600 p-1 rounded-full">
@@ -85,10 +108,15 @@ const InstagramPost: React.FC<Temp> = (data) => {
               {resData?.title}
             </span>
             <span>
-              <Button variant={"secondary"} className="mr-2">
+              <Button
+                onClick={() => handleTransferFrom()}
+                variant={"secondary"}
+                className="mr-2"
+              >
                 Transfer Post
                 <IconTransfer />
               </Button>
+
               <Button onClick={handleModalToggle}>
                 Donate <HandCoins />
               </Button>

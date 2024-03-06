@@ -25,7 +25,7 @@ import {
 } from "@/lib/supabase";
 import Post from "@/components/Cards/Post";
 import { useMoralis } from "react-moralis";
-import DonateAmountModal from "@/components/Modals/Donate";
+import DonateAmountModal from "@/components/Modals/DonateGamer";
 // Add missing import for the Profile component
 
 function Index() {

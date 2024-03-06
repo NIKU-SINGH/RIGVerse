@@ -129,6 +129,55 @@ export const donateGamerFn = async (
     console.error("Error calling contract function:", error);
   }
 };
+export const donatePostFn = async (
+  signer: Signer,
+  id: number,
+  amount: number
+) => {
+  try {
+    const account = await signer.getAddress();
+    const contract = new ethers.Contract(
+      USER_CONTRACT_ADDRESS,
+      USER_CONTRACT_ABI,
+      signer
+    );
+    console.log("amount", amount);
+    console.log("id", id);
+    // Call a function of your contract
+    const tx = await contract.donatePost(id, amount);
+
+    await tx.wait();
+    console.log(tx);
+    // Handle the transaction response or receipt as needed
+  } catch (error) {
+    console.error("Error calling contract function:", error);
+  }
+};
+
+export const transferFromFn = async (
+  signer: Signer,
+  to: string,
+  id: number
+) => {
+  try {
+    const account = await signer.getAddress();
+    const contract = new ethers.Contract(
+      POST_CONTRACT_ADDRESS,
+      POST_CONTRACT_ABI,
+      signer
+    );
+    console.log("to", to);
+    console.log("id", id);
+    // Call a function of your contract
+    const tx = await contract.transferFrom(account, to, id);
+
+    await tx.wait();
+    console.log(tx);
+    // Handle the transaction response or receipt as needed
+  } catch (error) {
+    console.error("Error calling contract function:", error);
+  }
+};
 
 export const getPostsByCreatorFn = async (signer: Signer) => {
   try {
@@ -139,11 +188,9 @@ export const getPostsByCreatorFn = async (signer: Signer) => {
       signer
     );
     // Call a function of your contract
-    const tx = await contract.getPostsByCreator(
-      "0x062A88EC102154D69aF12ecA850216063D8e65a7"
-    );
+    const tx = await contract.getPostsByCreator(account);
     // await tx.wait();
-    console.log(tx);
+    return tx[tx?.length - 1]?.toNumber();
     // Handle the transaction response or receipt as needed
   } catch (error) {
     console.error("Error calling contract function:", error);

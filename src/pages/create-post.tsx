@@ -38,7 +38,7 @@ import Link from "next/link";
 import { time } from "console";
 import { useRouter } from "next/router";
 import { ethers } from "ethers";
-import { mintPostFn } from "@/lib/contractFuncationCall";
+import { getPostsByCreatorFn, mintPostFn } from "@/lib/contractFuncationCall";
 
 const formSchema = z.object({
   title: z.string().min(2).max(200),
@@ -114,6 +114,14 @@ function Index() {
 
     if (account && file) {
       const cid = await uploadFile(file);
+      const provider = new ethers.providers.Web3Provider(
+        (window as any).ethereum,
+        "any"
+      );
+      await provider.send("eth_requestAccounts", []);
+      const signer = provider.getSigner();
+      const postId: number = await getPostsByCreatorFn(signer);
+      console.log("fetched postid ", postId);
       const data = {
         title: values.title,
         content: values.content,
@@ -126,11 +134,12 @@ function Index() {
         nft_address: "ss",
         likes: 0,
         reposts: 0,
+        id: postId,
       };
-      const id = await insertPost(data);
+      await insertPost(data);
 
       await handleMintPost(data);
-      setId(id || "");
+      setId(postId.toString() || "dd");
       // console.log(values);
     }
     setLoader(false);
