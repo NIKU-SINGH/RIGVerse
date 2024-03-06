@@ -27,6 +27,7 @@ import {
   getPostsByCreatorFn,
   transferFromFn,
 } from "@/lib/contractFuncationCall";
+import TransferModal from "@/components/Modals/Transfer";
 
 interface Temp {
   data: PostInterface;
@@ -38,6 +39,7 @@ const InstagramPost: React.FC<Temp> = (data) => {
   const { account } = useMoralis();
   const [loader, setLoader] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTransferModalOpen, setTransferIsModalOpen] = useState(false);
   // Simulated comments array
   const comments = [
     { username: "user1", text: "This is an awesome post!" },
@@ -47,6 +49,9 @@ const InstagramPost: React.FC<Temp> = (data) => {
 
   const handleModalToggle = async () => {
     setIsModalOpen(!isModalOpen);
+  };
+  const handleTransferModalToggle = async () => {
+    setTransferIsModalOpen(!isTransferModalOpen);
   };
 
   const handleRepost = async () => {
@@ -85,7 +90,7 @@ const InstagramPost: React.FC<Temp> = (data) => {
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
     const id = await getPostsByCreatorFn(signer);
-    await transferFromFn(signer, resData?.address, id);
+    await transferFromFn(signer, resData?.address, resData?.id as number);
     setLoader(false);
   };
 
@@ -94,6 +99,12 @@ const InstagramPost: React.FC<Temp> = (data) => {
       {loader && <Loader />}
       {isModalOpen && (
         <DonateAmountModal onClose={handleModalToggle} id={resData?.id || 1} />
+      )}
+      {isTransferModalOpen && (
+        <TransferModal
+          onClose={handleTransferModalToggle}
+          id={resData?.id || 1}
+        />
       )}
       <div className="  border-t-[1px] border-gray-700 text-gray-200 w-full">
         <div className="flex items-center px-4 py-3">
@@ -109,7 +120,7 @@ const InstagramPost: React.FC<Temp> = (data) => {
             </span>
             <span>
               <Button
-                onClick={() => handleTransferFrom()}
+                onClick={() => handleTransferModalToggle()}
                 variant={"secondary"}
                 className="mr-2"
               >

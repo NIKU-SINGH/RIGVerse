@@ -277,6 +277,25 @@ export const updatePost = async (id: number, repostCnt: number) => {
   }
 };
 
+// *************Transfer Post*********************
+
+export const transferPost = async (id: number, address: string) => {
+  console.log("address", address);
+  console.log("id", id);
+  const { data, error } = await supabase
+    .from("posts")
+    .update({ address: address })
+    .eq("id", id)
+    .select();
+  if (error) {
+    // Handle error
+    console.log(error);
+  } else {
+    // Handle success
+    return data[0]?.id;
+  }
+};
+
 // *************Update Post Likes*********************
 
 export const updatePostLike = async (id: number, likes: number) => {
