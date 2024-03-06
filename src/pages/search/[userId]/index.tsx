@@ -71,7 +71,7 @@ function Index() {
       {isModalOpen && (
         <DonateAmountModal
           onClose={handleModalToggle}
-          address={userData?.address}
+          address={userData?.address || ""}
         />
       )}
       <div className="flex">

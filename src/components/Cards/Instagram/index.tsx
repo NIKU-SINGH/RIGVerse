@@ -71,7 +71,7 @@ const InstagramPost: React.FC<Temp> = (data) => {
   return (
     <div className="p-4">
       {loader && <Loader />}
-      {isModalOpen && <DonateAmountModal onClose={handleModalToggle} />}
+      {/* {isModalOpen && <DonateAmountModal onClose={handleModalToggle} />} */}
       <div className="  border-t-[1px] border-gray-700 text-gray-200 w-full">
         <div className="flex items-center px-4 py-3">
           <div className="border-2 border-pink-600 p-1 rounded-full">
