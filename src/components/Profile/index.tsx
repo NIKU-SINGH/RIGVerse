@@ -16,6 +16,41 @@ import {
 } from "@/lib/supabase";
 import React, { useEffect, useState } from "react";
 import Post from "../Cards/Post";
+import Link from "next/link";
+import { link } from "fs";
+
+const tempData = [
+  {
+    id: 1,
+    name: "Hyperland",
+    price: 20,
+    link: "https://hyperland-liard.vercel.app",
+    image: "/games/hyperland.jpeg",
+    category: ["FPS", "MOBA", "Shooter"],
+    viewerCount: "4.9K Active Gamers",
+    badge: "Purchased",
+  },
+  {
+    id: 2,
+    name: "Arcave",
+    price: 20,
+    link: "https://eth-india-2023.vercel.app",
+    image: "/games/arcave.jpeg",
+    category: ["FPS", "MOBA", "Shooter"],
+    viewerCount: "4.9K Active Gamers",
+    badge: "Purchased",
+  },
+  {
+    id: 3,
+    name: "Warfield",
+    price: 20,
+    link: "https://warfield.vercel.app/",
+    image: "/games/warfield.jpeg",
+    category: ["FPS", "MOBA", "Shooter"],
+    viewerCount: "4.9K Active Gamers",
+    badge: "OnSale",
+  },
+];
 
 export default function Profile() {
   const { account } = useMoralis();
@@ -26,10 +61,10 @@ export default function Profile() {
     const fetchData = async () => {
       if (account) {
         const data1 = await fetchUserPost(account);
-        console.log(data1);
         setpostData(data1);
         const data2 = await fetchUserData(account);
         setuserData(data2);
+        console.log(data2);
       }
     };
     fetchData();
@@ -150,7 +185,31 @@ export default function Profile() {
               </li>
             </ul>
           </div>
-          {/* Post grid */}
+          {/* Post grid */}{" "}
+          <div className="h-24 flex items-center ">
+            {/* profile image */}
+            {userData?.studio && (
+              <Carousel className="w-full ">
+                <CarouselContent>
+                  {tempData.map(({ image, link }, index) => (
+                    <Link href={link}>
+                      <CarouselItem key={index} className="md:basis-1/12">
+                        <Image
+                          src={image}
+                          alt="profile"
+                          width={1000}
+                          height={1000}
+                          className="cursor-pointer h-16 w-16 object-cover border-2 border-pink-600 p-1 rounded-full"
+                        />
+                      </CarouselItem>
+                    </Link>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            )}
+          </div>
           <div className="flex flex-wrap justify-center">
             {postData?.map((item, index) => {
               console.log(item);
