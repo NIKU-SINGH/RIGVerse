@@ -200,7 +200,7 @@ function Index() {
               <Carousel className="w-full mb-4">
                 <CarouselContent>
                   {tempData.map(({ image, link }, index) => (
-                    <Link href={link}>
+                    <Link href={link} key={index}>
                       <CarouselItem key={index} className="md:basis-1/12">
                         <Image
                           src={image}
