@@ -193,8 +193,8 @@ export default function Profile() {
               <Carousel className="w-full ">
                 <CarouselContent>
                   {tempData.map(({ image, link }, index) => (
-                    <Link href={link}>
-                      <CarouselItem key={index} className="md:basis-1/12">
+                    <Link href={link} key={index}>
+                      <CarouselItem className="md:basis-1/12">
                         <Image
                           src={image}
                           alt="profile"
