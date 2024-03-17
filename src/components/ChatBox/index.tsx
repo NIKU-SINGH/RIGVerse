@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, MouseEvent } from "react";
+import { useState, ChangeEvent, MouseEvent, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
@@ -6,74 +6,78 @@ import axios from "axios";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
 import Header from "./components/Header";
+import VideoCallCard from "./components/MessageCards/VideoCallCard";
 import UserMessageCard from "./components/MessageCards/UserMessageCard";
 import FriendMessageCard from "./components/MessageCards/FriendMessageCard";
-import { insertMessage } from "@/lib/supabase";
-interface responseSchema {
-  userMessage?: string;
-  replies?: string;
-  error?: string;
+import { useMoralis } from "react-moralis";
+import {
+  GroupedConversation,
+  Msg,
+  fetchfromMessage,
+  fetchtoMessage,
+  groupConversations,
+  insertMessage,
+} from "@/lib/supabase";
+
+interface ChatInterface {
+  id: number;
+  created_at: string;
+  to: string;
+  from: string;
+  message: string;
 }
 
-function ChatBox() {
+interface Temp1 {
+  data: GroupedConversation;
+}
+
+const ChatBox: React.FC<Temp1> = (data) => {
+  const { account } = useMoralis();
   const [userMessage, setUserMessage] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [replies, setReplies] = useState<responseSchema[]>([]);
+  const [chatData, setChatData] = useState<ChatInterface[]>(data?.data?.chat);
 
-  const sendMessage = async () => {};
+  useEffect(() => {
+    setChatData(data?.data?.chat);
+  }, [data.data]);
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    await insertMessage();
-    // console.log("The message is", userMessage, loading);
-    // setReplies((prevState: responseSchema[]) => {
-    //   return [...prevState, { userMessage }];
-    // });
-    // setLoading(true);
-
-    // try {
-    //     const res = await axios.post("http://localhost:8000/api/v1/query", {
-    //         userMessage: userMessage,
-    //     });
-    //     const answer: string = res.data.response.text;
-    //     setReplies((prevState: responseSchema[]) => {
-    //         return prevState.map((entry) =>z
-    //             entry.userMessage === userMessage ? { ...entry, replies: [] } : entry
-    //         );
-    //     });
-    // } catch (e: unknown) {
-    //     console.log(e);
-    //     setReplies((prevState: responseSchema[]) => {
-    //         return prevState.map((entry) =>
-    //             entry.userMessage === userMessage
-    //                 ? { ...entry, error: "there was an error" }
-    //                 : entry
-    //         );
-    //     });
-    // }
+    // event.preventDefault();
+    await insertMessage({
+      to: data?.data?.addr || "addr2",
+      from: account || "",
+      message: userMessage || "",
+    });
+    window.location.reload();
     setUserMessage("");
     setLoading(false);
   };
-  // console.log(replies);
-  // useEffect(() => {
-  // },[currentResponse])
+
+  console.log(chatData);
   return (
     <div className="w-full">
       {/* Chat */}
       <div className="w-full">
         <div className="rounded-b-xl h-screen flex flex-col">
           {/* Chat Header */}
-          <Header />
+          <Header addr={data?.data?.addr} />
           <ScrollArea className="h-[83vh] px-8">
-            {replies?.map((data, id) => (
-              <div key={id} className="mt-4">
-                {/* Original users message */}
-                <UserMessageCard message={data.userMessage} />
-
-                {/* Reply from the friend */}
-                <FriendMessageCard message={data.userMessage} />
-              </div>
-            ))}
+            {chatData?.map(({ from, message }, index) => {
+              if (message?.startsWith("Room_id:")) {
+                return (
+                  <VideoCallCard
+                    message={message}
+                    from={from}
+                    to={data?.data?.addr}
+                    key={index}
+                  />
+                );
+              }
+              if (account && account == from) {
+                return <UserMessageCard message={message} key={index} />;
+              }
+              return <FriendMessageCard message={message} key={index} />;
+            })}
           </ScrollArea>
           {/* Input */}
           <div className=" flex items-center justify-center py-2 ">
@@ -103,6 +107,6 @@ function ChatBox() {
       </div>
     </div>
   );
-}
+};
 
 export default ChatBox;

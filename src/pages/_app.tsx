@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
           {isChatRoute &&
             !isRootRoute &&
             isRegisterRoute &&
-            isStudioRegisterRoute && <GlobalChat />}{" "}
+            isStudioRegisterRoute && <GlobalChat />}
           {/* Only render GlobalChat if it's not the /chat route */}
           <Component {...pageProps} />
         </HuddleProvider>

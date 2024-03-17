@@ -49,8 +49,8 @@ const components: { title: string; href: string; description: string }[] = [
 function index() {
   return (
     <div className=" mt-4 p-2">
-      <NavigationMenu className="">
-        <NavigationMenuList className="px-6 md:px-36 flex mx-10 items-center justify-center">
+      <NavigationMenu className="min-w-[98vw]">
+        <NavigationMenuList className="px-6  w-[90vw] flex mx-10 items-center justify-between">
           <NavigationMenuItem className="w-96">
             <Link href="/">
               <Image src="/logo.png" alt="logo" width={150} height={150} />
@@ -59,24 +59,6 @@ function index() {
           <NavigationMenuItem className="w-30">
             <ConnectWallet />
           </NavigationMenuItem>
-
-          {/* {components.map((component) => (
-                        <NavigationMenuItem key={component.title}>
-                            <NavigationMenuLink href={component.href}>
-                                <div className='mx-2 text-white hover:border-b-2'>
-                                    {component.title}
-                                </div>
-                            </NavigationMenuLink>
-                        </NavigationMenuItem>
-                    ))} */}
-          {/* <div className='flex w-96 items-center justify-center gap-4'>
-                        <NavigationMenuItem>
-                            <Button className='bg-primary rounded-2xl m'>Donate</Button>
-                        </NavigationMenuItem>
-                        <NavigationMenuItem>
-                            <Button className='bg-primary rounded-2xl w-48'>Register</Button>
-                        </NavigationMenuItem>
-                    </div> */}
         </NavigationMenuList>
       </NavigationMenu>
     </div>
